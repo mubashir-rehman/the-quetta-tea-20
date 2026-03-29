@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Best Rooftop Tea in Lahore, Barkat Market Late Night Food, Matka Chai Lahore, The Quetta Tea 20, QT20 Lahore" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://thequettatea20.pk/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90" />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<!-- JSON-LD Schema -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "FoodEstablishment",
+				"name": "The Quetta Tea 20",
+				"alternateName": "QT20",
+				"image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90",
+				"@id": "https://thequettatea20.pk/",
+				"url": "https://thequettatea20.pk/",
+				"telephone": "+923000000000",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Barkat Market, Garden Town",
+					"addressLocality": "Lahore",
+					"addressRegion": "Punjab",
+					"postalCode": "54000",
+					"addressCountry": "PK"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": 31.5048,
+					"longitude": 74.3256
+				},
+				"openingHoursSpecification": {
+					"@type": "OpeningHoursSpecification",
+					"dayOfWeek": [
+						"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+					],
+					"opens": "12:00",
+					"closes": "02:00"
+				},
+				"servesCuisine": ["Tea", "Paratha", "Fast Food"],
+				"priceRange": "Rs. 140 - Rs. 650",
+				"hasMenu": {
+					"@type": "Menu",
+					"hasMenuSection": [
+						{
+							"@type": "MenuSection",
+							"name": "Teas",
+							"hasMenuItem": [
+								{ "@type": "MenuItem", "name": "QT20 Special Doodh Patti", "offers": { "@type": "Offer", "price": "140", "priceCurrency": "PKR" } },
+								{ "@type": "MenuItem", "name": "Matka Doodh Patti", "offers": { "@type": "Offer", "price": "180", "priceCurrency": "PKR" } },
+								{ "@type": "MenuItem", "name": "Golden Malai Tea", "offers": { "@type": "Offer", "price": "170", "priceCurrency": "PKR" } },
+								{ "@type": "MenuItem", "name": "Kashmiri Dry Fruit Tea", "offers": { "@type": "Offer", "price": "270", "priceCurrency": "PKR" } }
+							]
+						},
+						{
+							"@type": "MenuSection",
+							"name": "Savory Parathas",
+							"hasMenuItem": [
+								{ "@type": "MenuItem", "name": "Chicken Cheese Paratha", "offers": { "@type": "Offer", "price": "400-650", "priceCurrency": "PKR" } },
+								{ "@type": "MenuItem", "name": "Aloo Cheese Paratha", "offers": { "@type": "Offer", "price": "240-470", "priceCurrency": "PKR" } }
+							]
+						}
+					]
+				},
+				"amenityFeature": [
+					{ "@type": "LocationFeatureSpecification", "name": "Rooftop Seating", "value": true },
+					{ "@type": "LocationFeatureSpecification", "name": "Live Music", "value": true }
+				]
+			}
+		</script>
+	</head>
+	<body class="bg-background text-on-surface font-body">
+		<slot />
+	</body>
+</html>

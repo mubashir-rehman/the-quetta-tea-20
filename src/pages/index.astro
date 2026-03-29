@@ -1,0 +1,363 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const MENU_CATEGORIES = [
+  {
+    name: "Teas",
+    items: [
+      { id: 1, name: "QT20 Special Doodh Patti", price: "Rs. 140", description: "Our signature blend, slow-cooked to perfection." },
+      { id: 2, name: "Matka Doodh Patti", price: "Rs. 180", description: "Authentic tea served in a traditional clay pot for earthy notes." },
+      { id: 3, name: "Golden Malai Tea", price: "Rs. 170", description: "Rich tea topped with a thick layer of fresh malai." },
+      { id: 4, name: "Kashmiri Dry Fruit Tea", price: "Rs. 270", description: "Pink tea infused with premium nuts and traditional spices." },
+      { id: 5, name: "Chocolate Tea", price: "Rs. 190", description: "A decadent fusion of strong tea and cocoa." }
+    ]
+  },
+  {
+    name: "Savory Parathas",
+    items: [
+      { id: 6, name: "Chicken Cheese Paratha", price: "Rs. 400-650", description: "Stuffed with seasoned chicken and gooey mozzarella." },
+      { id: 7, name: "Aloo Cheese Paratha", price: "Rs. 240-470", description: "Classic potato filling with a cheesy twist." },
+      { id: 8, name: "Pizza Paratha", price: "Rs. 550", description: "All your favorite pizza toppings inside a crispy paratha." },
+      { id: 9, name: "Lachha Paratha", price: "Rs. 120", description: "Multi-layered crispy paratha, perfect with any tea." }
+    ]
+  },
+  {
+    name: "Sweet Parathas",
+    items: [
+      { id: 10, name: "Malai Paratha", price: "Rs. 330", description: "Sweet paratha filled with fresh cream." },
+      { id: 11, name: "Honey Malai Paratha", price: "Rs. 400", description: "Drizzled with pure honey and fresh malai." },
+      { id: 12, name: "Chocolate Paratha", price: "Rs. 380", description: "Filled with melted chocolate for the ultimate treat." }
+    ]
+  },
+  {
+    name: "Platters",
+    items: [
+      { id: 13, name: "Nashta Thali", price: "Rs. 320", description: "2 Puri, Halwa, Chanay, and Achar. The complete breakfast." }
+    ]
+  }
+];
+---
+
+<Layout title="The Quetta Tea 20 (QT20) | Best Rooftop Tea in Barkat Market, Lahore" description="Chai, Music, and Rooftop Vibes. Experience the best Matka Chai and Parathas at The Quetta Tea 20 in Barkat Market, Lahore. Open late night.">
+	<div class="min-h-screen flex flex-col">
+		<!-- Navigation -->
+		<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
+			<div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+				<div class="text-2xl font-black text-amber-400 tracking-tighter">THE QUETTA TEA 20</div>
+				
+				<div class="hidden md:flex items-center gap-10">
+					<a href="#menu" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Menu</a>
+					<a href="#experience" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">The Vibe</a>
+					<a href="#find-us" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Find Us</a>
+					<button class="border border-amber-400 text-amber-400 px-6 py-2 rounded-full font-bold hover:bg-amber-400 hover:text-[#402d00] transition-all">
+						WhatsApp Takeaway
+					</button>
+				</div>
+
+				<button id="menu-toggle" class="md:hidden text-[#e5e2e1]">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+				</button>
+			</div>
+
+			<!-- Mobile Menu -->
+			<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-[#2a2a2a] p-6 flex flex-col gap-4 shadow-2xl">
+				<a href="#menu" class="text-lg font-bold">Menu</a>
+				<a href="#experience" class="text-lg">The Vibe</a>
+				<a href="#find-us" class="text-lg">Find Us</a>
+				<button class="bg-[#ffbf00] text-[#402d00] font-bold py-3 rounded-xl">WhatsApp Takeaway</button>
+			</div>
+		</nav>
+
+		<main>
+			<!-- Hero Section -->
+			<section class="relative h-screen flex items-center justify-center overflow-hidden">
+				<div class="absolute inset-0 z-0">
+					<img 
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90" 
+						alt="The Quetta Tea 20 Rooftop" 
+						class="w-full h-full object-cover"
+					/>
+					<div class="absolute inset-0 hero-gradient"></div>
+				</div>
+				
+				<div class="relative z-10 text-center px-6 max-w-4xl">
+					<h1 class="text-6xl md:text-8xl font-black text-[#ffe2ab] leading-tight tracking-tighter mb-6 opacity-0 translate-y-8 animate-fade-in">
+						Chai, Music, and Rooftop Vibes
+					</h1>
+					<p class="text-xl md:text-2xl text-[#d4c5ab] font-light tracking-wide max-w-2xl mx-auto opacity-0 translate-y-8 animate-fade-in-delay">
+						Experience the nostalgic atmosphere of Barkat Market's best open-air rooftop, featuring legendary NFAK melodies.
+					</p>
+					<div class="mt-12 flex flex-wrap justify-center gap-4 opacity-0 scale-95 animate-scale-in">
+						<a href="#menu" class="inline-flex items-center gap-2 bg-gradient-to-br from-[#ffbf00] to-[#ffe2ab] text-[#402d00] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-[#ffbf00]/20 transition-all active:scale-95">
+							Explore the Menu
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+						</a>
+						<a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#2a2a2a] text-[#e5e2e1] px-10 py-4 rounded-full font-bold text-lg border border-white/10 hover:bg-[#353535] transition-all active:scale-95">
+							Get Directions
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Menu Section -->
+			<section id="menu" class="py-24 bg-[#131313] px-6">
+				<div class="max-w-7xl mx-auto">
+					<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+						<div>
+							<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">The Selection</span>
+							<h2 class="text-5xl font-bold mt-2">Our Best Sellers</h2>
+						</div>
+						<div class="flex flex-wrap gap-2" id="category-filters">
+							{MENU_CATEGORIES.map(cat => (
+								<button 
+									data-category={cat.name}
+									class={`category-btn px-6 py-2 rounded-full text-sm font-bold transition-all border ${cat.name === 'Teas' ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
+								>
+									{cat.name}
+								</button>
+							))}
+						</div>
+					</div>
+
+					<div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{MENU_CATEGORIES[0].items.map((item) => (
+							<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
+								<div class="flex justify-between items-start mb-2">
+									<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">{item.name}</h3>
+									<span class="text-amber-400 font-bold whitespace-nowrap ml-4">{item.price}</span>
+								</div>
+								<p class="text-[#d4c5ab] text-sm leading-relaxed">{item.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- Experience Section -->
+			<section id="experience" class="w-full bg-[#0e0e0e] overflow-hidden">
+				<div class="flex flex-col md:flex-row h-auto md:h-[80vh]">
+					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full">
+						<img 
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpEzRnwutv1qN8jjFz0G9cZmv_jn-AGgm3ROQO06xmoXX4VqZ-tue1bfwwir2wII5C2JizboEHboqxxfYQ4pgBEAQDAuQbAXD2u-VFybc61ee2mFJ_n7tkA4I44qhmKN1GTulot68HLNcocrAmvAa4RHRFkyerD-G0t2CYSU2LCY2QrvwggwlR_7rerHVSKhJPUYmpPybh3lVg1Vclr_9_mXlmWZ4Snk2EyXiGfu5axLvY73fOQW7H9_3HkVyDMOE58rgk3mXO8uU" 
+							alt="Nostalgic Vibes" 
+							class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+						/>
+						<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-[#131313] to-transparent">
+							<h4 class="text-4xl font-bold mb-4">Legendary Melodies</h4>
+							<p class="text-[#d4c5ab] max-w-md">Immerse yourself in the soulful NFAK playlist that defines our nostalgic rooftop atmosphere.</p>
+						</div>
+					</div>
+					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full">
+						<img 
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Bou-79-XNVWqY4Rp_bJZ-cpyRPEKN8bxn5JIj9UD35mQvd-01OtboyntoNkLMoEKmwYrxBWn7Tl28ROUc-bFN74R1iURU5xsiAuTIU0m3FiREuQuyNCOabpw5-pqw674NAmOgC8-dOew_tuFfojYRtQDwNW7OR2G83nZadnwk2szt2x9cCyG0VSu6e7nPVMoOy3fOtPti41OhdIR5wRTh1UyYpyRjrt359z3v197bo4qEPDL-ypxKDx03Kj60cx9bCDdB62Gt6o" 
+							alt="Rooftop Seating" 
+							class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+						/>
+						<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-[#131313] to-transparent">
+							<h4 class="text-4xl font-bold mb-4">Barkat Market Views</h4>
+							<p class="text-[#d4c5ab] max-w-md">The best open-air rooftop experience in Lahore's most vibrant food hub.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Service Philosophy -->
+			<section class="py-24 bg-[#131313] text-center px-6">
+				<div class="max-w-4xl mx-auto border-y border-white/5 py-16">
+					<h2 class="text-3xl mb-12 italic text-[#d4c5ab] font-headline">Service Philosophy</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+						<div class="flex flex-col items-center gap-4">
+							<div class="w-16 h-16 rounded-full bg-[#2a2a2a] flex items-center justify-center border border-[#ffe2ab]/20">
+								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
+							</div>
+							<h3 class="font-bold text-xl uppercase tracking-widest">Eat-In</h3>
+							<p class="text-[#d4c5ab] text-sm">Experience the full ambiance of our nocturnal gallery with table service.</p>
+						</div>
+						<div class="flex flex-col items-center gap-4">
+							<div class="w-16 h-16 rounded-full bg-[#2a2a2a] flex items-center justify-center border border-[#ffe2ab]/20">
+								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+							</div>
+							<h3 class="font-bold text-xl uppercase tracking-widest">Takeaway</h3>
+							<p class="text-[#d4c5ab] text-sm">Perfectly packaged urban bites to enjoy on the move. Pre-order via WhatsApp.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Find Us Section -->
+			<section id="find-us" class="py-24 bg-[#1c1b1b] px-6">
+				<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+					<div class="space-y-8">
+						<div>
+							<span class="text-[#f59e0b] tracking-[0.3em] uppercase text-sm font-bold">Visit Us</span>
+							<h2 class="text-5xl font-bold mt-2">Find Your Corner</h2>
+						</div>
+						<div class="space-y-6">
+							<div class="flex gap-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+								<div>
+									<p class="font-bold text-lg">Barkat Market, Garden Town</p>
+									<p class="text-[#d4c5ab]">Lahore, Punjab, Pakistan</p>
+								</div>
+							</div>
+							<div class="flex gap-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+								<div>
+									<p class="font-bold text-lg">Open Daily</p>
+									<p class="text-[#d4c5ab]">12:00 PM — 2:00 AM (Next Day)</p>
+								</div>
+							</div>
+							<div class="flex gap-6 pt-4">
+								<a href="https://instagram.com/thequettatea20" target="_blank" rel="noopener noreferrer" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://wa.me/923000000000" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+								</a>
+								<a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="rounded-3xl overflow-hidden h-[450px] shadow-2xl grayscale contrast-125 border border-white/5 relative group">
+						<img 
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxfsV5wWx2idmIjCYev0KOGs1x1nYJVop_VmsKdVSEnuJeJ5Pvhk9vzuxn6YeeiKfxDUSjXGQ5jDN1aQgSr2gerdbYG-ZGF4tgOLYsENutmCXfSMxBF3iYc_pt6IB8HbNvC7dAwdzAaPIq1af0CK92gEB4m9I2ZvBfec7A6y1O3NGSNLOfq_n1cyBsDdUECA_dXWEEyRC8J9OioE9OrUohfpd6qRVw907cK3GChxDTm0PS5g2_eSBEXeK2PDfzi9btp10MxprQoQQ" 
+							alt="Map Location" 
+							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+						/>
+						<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+							<a 
+								href="https://maps.google.com" 
+								target="_blank" 
+								rel="noopener noreferrer"
+								class="bg-[#131313] px-8 py-4 rounded-full border border-[#ffe2ab]/40 text-[#ffe2ab] font-bold hover:bg-[#ffe2ab] hover:text-[#402d00] transition-all shadow-2xl"
+							>
+								Get Directions
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-[#131313] py-16 border-t border-white/5 px-6">
+			<div class="max-w-7xl mx-auto flex flex-col items-center gap-8">
+				<div class="text-2xl font-black text-[#e5e2e1] tracking-tighter">THE QUETTA TEA 20</div>
+				<div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-[#d4c5ab]">
+					<a href="#menu" class="hover:text-[#ffe2ab] transition-colors">Menu</a>
+					<a href="#experience" class="hover:text-[#ffe2ab] transition-colors">The Vibe</a>
+					<a href="#find-us" class="hover:text-[#ffe2ab] transition-colors">Find Us</a>
+					<a href="https://wa.me/923000000000" class="text-[#f59e0b] hover:text-[#ffe2ab] transition-colors">WhatsApp Takeaway</a>
+				</div>
+				<div class="text-xs text-[#d4c5ab]/60 text-center space-y-2">
+					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. Barkat Market.</p>
+					<p>Dine-in & Takeaway Only. Open Late Night.</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- WhatsApp FAB -->
+		<a 
+			href="https://wa.me/923000000000" 
+			target="_blank" 
+			rel="noopener noreferrer"
+			class="fixed bottom-8 right-8 z-[60] group"
+		>
+			<div class="bg-[#ffbf00] text-[#402d00] p-4 rounded-full shadow-2xl flex items-center gap-2 group-hover:pr-8 transition-all duration-300">
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fill-current"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+				<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold whitespace-nowrap text-lg">
+					WhatsApp for Takeaway
+				</span>
+			</div>
+		</a>
+	</div>
+</Layout>
+
+<script define:vars={{ MENU_CATEGORIES }}>
+	// Navbar scroll effect
+	const navbar = document.getElementById('navbar');
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 50) {
+			navbar.classList.add('bg-[#131313]/80', 'backdrop-blur-xl', 'py-4', 'shadow-xl');
+			navbar.classList.remove('bg-transparent', 'py-6');
+		} else {
+			navbar.classList.remove('bg-[#131313]/80', 'backdrop-blur-xl', 'py-4', 'shadow-xl');
+			navbar.classList.add('bg-transparent', 'py-6');
+		}
+	});
+
+	// Mobile menu toggle
+	const menuToggle = document.getElementById('menu-toggle');
+	const mobileMenu = document.getElementById('mobile-menu');
+	menuToggle.addEventListener('click', () => {
+		mobileMenu.classList.toggle('hidden');
+	});
+
+	// Menu filtering
+	const categoryBtns = document.querySelectorAll('.category-btn');
+	const menuGrid = document.getElementById('menu-grid');
+
+	categoryBtns.forEach(btn => {
+		btn.addEventListener('click', () => {
+			const category = btn.getAttribute('data-category');
+			
+			// Update active button style
+			categoryBtns.forEach(b => {
+				b.classList.remove('bg-[#ffe2ab]', 'text-[#402d00]', 'border-[#ffe2ab]');
+				b.classList.add('bg-[#1c1b1b]', 'text-[#d4c5ab]', 'border-white/5');
+			});
+			btn.classList.add('bg-[#ffe2ab]', 'text-[#402d00]', 'border-[#ffe2ab]');
+			btn.classList.remove('bg-[#1c1b1b]', 'text-[#d4c5ab]', 'border-white/5');
+
+			// Update menu items
+			const categoryData = MENU_CATEGORIES.find(cat => cat.name === category);
+			if (categoryData) {
+				menuGrid.innerHTML = categoryData.items.map(item => `
+					<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group opacity-0 translate-y-4 animate-fade-in-up">
+						<div class="flex justify-between items-start mb-2">
+							<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">${item.name}</h3>
+							<span class="text-amber-400 font-bold whitespace-nowrap ml-4">${item.price}</span>
+						</div>
+						<p class="text-[#d4c5ab] text-sm leading-relaxed">${item.description}</p>
+					</div>
+				`).join('');
+			}
+		});
+	});
+</script>
+
+<style>
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(20px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes scaleIn {
+		from { opacity: 0; transform: scale(0.95); }
+		to { opacity: 1; transform: scale(1); }
+	}
+
+	@keyframes fadeInUp {
+		from { opacity: 0; transform: translateY(16px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	.animate-fade-in {
+		animation: fadeIn 0.8s ease-out forwards;
+	}
+
+	.animate-fade-in-delay {
+		animation: fadeIn 0.8s ease-out 0.2s forwards;
+	}
+
+	.animate-scale-in {
+		animation: scaleIn 0.5s ease-out 0.4s forwards;
+	}
+
+	.animate-fade-in-up {
+		animation: fadeInUp 0.4s ease-out forwards;
+	}
+</style>

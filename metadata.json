@@ -1,0 +1,5 @@
+{
+  "name": "The Quetta Tea 20",
+  "description": "Chai, Music, and Rooftop Vibes. The best rooftop tea experience in Barkat Market, Lahore. Featuring Matka Chai, Savory Parathas, and NFAK vibes.",
+  "requestFramePermissions": ["geolocation"]
+}
