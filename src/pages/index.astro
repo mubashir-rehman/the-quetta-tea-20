@@ -3,36 +3,183 @@ import Layout from '../layouts/Layout.astro';
 
 const MENU_CATEGORIES = [
   {
-    name: "Teas",
+    name: "Tea",
     items: [
-      { id: 1, name: "QT20 Special Doodh Patti", price: "Rs. 140", description: "Our signature blend, slow-cooked to perfection." },
-      { id: 2, name: "Matka Doodh Patti", price: "Rs. 180", description: "Authentic tea served in a traditional clay pot for earthy notes." },
-      { id: 3, name: "Golden Malai Tea", price: "Rs. 170", description: "Rich tea topped with a thick layer of fresh malai." },
-      { id: 4, name: "Kashmiri Dry Fruit Tea", price: "Rs. 270", description: "Pink tea infused with premium nuts and traditional spices." },
-      { id: 5, name: "Chocolate Tea", price: "Rs. 190", description: "A decadent fusion of strong tea and cocoa." }
+      { name: "Quetta Tea", price: "Rs. 250" },
+      { name: "Cardamom Tea", price: "Rs. 250" },
+      { name: "Zafrani Tea", price: "Rs. 250" },
+      { name: "Karak Special Tea", price: "Rs. 250" },
+      { name: "Chocolate Tea", price: "Rs. 280" },
+      { name: "Doodh Patti Special", price: "Rs. 280" },
+      { name: "Sulemani Tea Indian (kehwa)", price: "Rs. 200" },
+      { name: "Masala Tea", price: "Rs. 280" },
+      { name: "Malai Tea", price: "Rs. 280" },
+      { name: "Karak Ginger Tea", price: "Rs. 280" },
+      { name: "Green Tea", price: "Rs. 200" }
     ]
   },
   {
-    name: "Savory Parathas",
+    name: "Mocktails",
     items: [
-      { id: 6, name: "Chicken Cheese Paratha", price: "Rs. 400-650", description: "Stuffed with seasoned chicken and gooey mozzarella." },
-      { id: 7, name: "Aloo Cheese Paratha", price: "Rs. 240-470", description: "Classic potato filling with a cheesy twist." },
-      { id: 8, name: "Pizza Paratha", price: "Rs. 550", description: "All your favorite pizza toppings inside a crispy paratha." },
-      { id: 9, name: "Lachha Paratha", price: "Rs. 120", description: "Multi-layered crispy paratha, perfect with any tea." }
+      { name: "Mint Margarita", price: "Rs. 300" },
+      { name: "Pina Colada", price: "Rs. 350" },
+      { name: "Blue Colada", price: "Rs. 350" },
+      { name: "Pineapple Chiller", price: "Rs. 300" },
+      { name: "Lemonade Chiller", price: "Rs. 300" },
+      { name: "Strawberry Margarita", price: "Rs. 350" },
+      { name: "Mojito (Blueberry / Strawberry)", price: "Rs. 350" },
+      { name: "Shakes (Strawberry / Chocolate)", price: "Rs. 350" },
+      { name: "Fresh Lime", price: "Rs. 200" }
     ]
   },
   {
-    name: "Sweet Parathas",
+    name: "Quetta Coffee House",
     items: [
-      { id: 10, name: "Malai Paratha", price: "Rs. 330", description: "Sweet paratha filled with fresh cream." },
-      { id: 11, name: "Honey Malai Paratha", price: "Rs. 400", description: "Drizzled with pure honey and fresh malai." },
-      { id: 12, name: "Chocolate Paratha", price: "Rs. 380", description: "Filled with melted chocolate for the ultimate treat." }
+      { name: "Hot Coffee", price: "Rs. 300" },
+      { name: "Cappuccino", price: "Rs. 450" },
+      { name: "Latte", price: "Rs. 450" },
+      { name: "Beater", price: "Rs. 400" },
+      { name: "Iced Coffee", price: "Rs. 400" }
     ]
   },
   {
-    name: "Platters",
+    name: "Starters",
     items: [
-      { id: 13, name: "Nashta Thali", price: "Rs. 320", description: "2 Puri, Halwa, Chanay, and Achar. The complete breakfast." }
+      { name: "Plain Fries", price: "Rs. 300" },
+      { name: "Masala Fries", price: "Rs. 330" },
+      { name: "Cheese Fries", price: "Rs. 450" },
+      { name: "Loaded Fries", price: "Rs. 500" },
+      { name: "Chicken Strips (6 Pieces)", price: "Rs. 600" }
+    ]
+  },
+  {
+    name: "Burgers",
+    items: [
+      { name: "Zinger Burger", price: "Rs. 400" },
+      { name: "Monster Zinger Burger", price: "Rs. 600" },
+      { name: "Jalapeno Crunchy Burger", price: "Rs. 600" },
+      { name: "Pizza Burger", price: "Rs. 500" },
+      { name: "Quetta Stuffed Chicken Burger", price: "Rs. 700" }
+    ]
+  },
+  {
+    name: "Sandwiches",
+    items: [
+      { name: "Chicken Club Sandwich", price: "Rs. 450" },
+      { name: "BBQ Sandwich", price: "Rs. 400" },
+      { name: "Grilled Sandwich", price: "Rs. 450" },
+      { name: "Cheese Sandwich", price: "Rs. 450" },
+      { name: "Fajita Sandwich", price: "Rs. 450" }
+    ]
+  },
+  {
+    name: "Wraps & Shawarma",
+    items: [
+      { name: "Chicken Cheese Wrap", price: "Rs. 450" },
+      { name: "BBQ Wrap", price: "Rs. 400" },
+      { name: "Tortilla Wrap", price: "Rs. 400" },
+      { name: "Chicken Shawarma", price: "Rs. 350" },
+      { name: "Zinger Shawarma", price: "Rs. 400" },
+      { name: "Quetta Signature Platter", price: "Rs. 650" }
+    ]
+  },
+  {
+    name: "Pizza",
+    type: "pizza",
+    items: [
+      { name: "Chicken Tikka", prices: { S: 550, M: 950, L: 1550 } },
+      { name: "Chicken Fajita", prices: { S: 550, M: 950, L: 1550 } },
+      { name: "Chicken Supreme", prices: { S: 600, M: 1000, L: 1600 } },
+      { name: "Malai Boti", prices: { S: 600, M: 1050, L: 1650 } },
+      { name: "Quetta Signature", prices: { S: 1200, M: 1750, L: 1800 } }
+    ]
+  },
+  {
+    name: "Chinese Gravy",
+    type: "dual",
+    items: [
+      { name: "Almond Chicken", prices: { Half: 499, Full: 799 } },
+      { name: "Garlic Chicken", prices: { Half: 499, Full: 799 } },
+      { name: "Black Pepper Chicken", prices: { Half: 499, Full: 799 } },
+      { name: "Manchurian Chicken", prices: { Half: 499, Full: 799 } },
+      { name: "Chilli Dry Chicken", prices: { Half: 549, Full: 949 } },
+      { name: "Cashew Nut Chicken", prices: { Half: 549, Full: 949 } },
+      { name: "Chicken Chowmein", price: "Rs. 600" }
+    ]
+  },
+  {
+    name: "Chinese Rice",
+    type: "dual",
+    items: [
+      { name: "Chicken Masala Rice", prices: { Half: 399, Full: 549 } },
+      { name: "Egg Fried Rice", prices: { Half: 399, Full: 549 } },
+      { name: "Chicken Fried Rice", prices: { Half: 449, Full: 649 } }
+    ]
+  },
+  {
+    name: "Pasta & Steaks",
+    items: [
+      { name: "Fettuccine Alfredo Pasta", price: "Rs. 850" },
+      { name: "California Crispy Pasta", price: "Rs. 700" },
+      { name: "Tarragon Steak", price: "Rs. 900" },
+      { name: "Mexican Steak", price: "Rs. 900" },
+      { name: "Peri Peri Steak", price: "Rs. 900" },
+      { name: "Stuffed Chicken Steak", price: "Rs. 1050" }
+    ]
+  },
+  {
+    name: "Quetta Karahi Corner",
+    type: "dual",
+    items: [
+      { name: "Chicken Karahi Black Pepper", prices: { Half: 1100, Full: 2050 } },
+      { name: "Chicken White Karahi", prices: { Half: 1100, Full: 2050 } },
+      { name: "Chicken Changezi", prices: { Half: 1100, Full: 2050 } },
+      { name: "Chicken Hara Masala Karahi", prices: { Half: 1100, Full: 2050 } }
+    ]
+  },
+  {
+    name: "Chicken Handi",
+    type: "dual",
+    items: [
+      { name: "Chicken Handi", prices: { Half: 1100, Full: 2050 } },
+      { name: "Chicken Achari Handi", price: "Rs. 1300" },
+      { name: "Chicken Jalfrezi", price: "Rs. 1300" },
+      { name: "Butter Handi", price: "Rs. 1300" }
+    ]
+  },
+  {
+    name: "Paratha & Tandoor",
+    items: [
+      { name: "Lacha Paratha", price: "Rs. 150" },
+      { name: "Aloo Paratha", price: "Rs. 200" },
+      { name: "Malai Paratha", price: "Rs. 350" },
+      { name: "Chicken Paratha", price: "Rs. 400" },
+      { name: "Chicken Cheese Paratha", price: "Rs. 450" },
+      { name: "Quetta Special Paratha", price: "Rs. 500" },
+      { name: "Saada Roti", price: "Rs. 30" },
+      { name: "Roghni Naan", price: "Rs. 150" },
+      { name: "Kalwanji Naan", price: "Rs. 150" },
+      { name: "Garlic Naan", price: "Rs. 150" },
+      { name: "Hara Bhara Naan", price: "Rs. 180" }
+    ]
+  },
+  {
+    name: "Rolls",
+    items: [
+      { name: "Chicken Tikka Roll", price: "Rs. 450" },
+      { name: "Chicken Malai Boti Roll", price: "Rs. 450" }
+    ]
+  },
+  {
+    name: "Beverages & Salad",
+    items: [
+      { name: "Mineral Water (Small)", price: "Rs. 90" },
+      { name: "Mineral Water (Large)", price: "Rs. 130" },
+      { name: "Cold Drink (350ml)", price: "Rs. 130" },
+      { name: "Cold Drink (1.5L)", price: "Rs. 230" },
+      { name: "Raita", price: "Rs. 80" },
+      { name: "Fresh Salad", "price": "Rs. 120" },
+      { "name": "Crushed Salad", "price": "Rs. 150" }
     ]
   }
 ];
@@ -45,14 +192,14 @@ const MENU_CATEGORIES = [
 			<div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
 				<div class="text-2xl font-black text-amber-400 tracking-tighter">THE QUETTA TEA 20</div>
 				
-				<div class="hidden md:flex items-center gap-10">
-					<a href="#menu" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Menu</a>
-					<a href="#experience" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">The Vibe</a>
-					<a href="#find-us" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Find Us</a>
-					<button class="border border-amber-400 text-amber-400 px-6 py-2 rounded-full font-bold hover:bg-amber-400 hover:text-[#402d00] transition-all">
-						WhatsApp Takeaway
-					</button>
-				</div>
+					<div class="hidden md:flex items-center gap-10">
+						<a href="#menu" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Menu</a>
+						<a href="#experience" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">The Vibe</a>
+						<a href="#find-us" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Find Us</a>
+						<a href="https://wa.me/923149998804" class="border border-amber-400 text-amber-400 px-6 py-2 rounded-full font-bold hover:bg-amber-400 hover:text-[#402d00] transition-all">
+							WhatsApp Order
+						</a>
+					</div>
 
 				<button id="menu-toggle" class="md:hidden text-[#e5e2e1]">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -60,11 +207,11 @@ const MENU_CATEGORIES = [
 			</div>
 
 			<!-- Mobile Menu -->
-			<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-[#2a2a2a] p-6 flex flex-col gap-4 shadow-2xl">
-				<a href="#menu" class="text-lg font-bold">Menu</a>
-				<a href="#experience" class="text-lg">The Vibe</a>
-				<a href="#find-us" class="text-lg">Find Us</a>
-				<button class="bg-[#ffbf00] text-[#402d00] font-bold py-3 rounded-xl">WhatsApp Takeaway</button>
+			<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-[#131313]/95 backdrop-blur-2xl border-b border-white/5 py-10 px-8 space-y-8 shadow-2xl animate-fade-in">
+				<a href="#menu" class="mobile-link block text-2xl font-black text-amber-400 tracking-tighter">MENU</a>
+				<a href="#experience" class="mobile-link block text-2xl font-black text-[#d4c5ab] tracking-tighter">THE VIBE</a>
+				<a href="#find-us" class="mobile-link block text-2xl font-black text-[#d4c5ab] tracking-tighter">FIND US</a>
+				<a href="https://wa.me/923149998804" class="mobile-link block text-2xl font-black text-amber-400 tracking-tighter border-t border-white/5 pt-8">WHATSAPP ORDER</a>
 			</div>
 		</nav>
 
@@ -92,7 +239,7 @@ const MENU_CATEGORIES = [
 							Explore the Menu
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
 						</a>
-						<a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#2a2a2a] text-[#e5e2e1] px-10 py-4 rounded-full font-bold text-lg border border-white/10 hover:bg-[#353535] transition-all active:scale-95">
+						<a href="https://www.google.com/maps/search/?api=1&query=30+Civic+Centre+Barkat+Market+New+Garden+Town+Lahore" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#2a2a2a] text-[#e5e2e1] px-10 py-4 rounded-full font-bold text-lg border border-white/10 hover:bg-[#353535] transition-all active:scale-95">
 							Get Directions
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
 						</a>
@@ -106,13 +253,13 @@ const MENU_CATEGORIES = [
 					<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
 						<div>
 							<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">The Selection</span>
-							<h2 class="text-5xl font-bold mt-2">Our Best Sellers</h2>
+							<h2 class="text-5xl font-bold mt-2">Our Menu</h2>
 						</div>
-						<div class="flex flex-wrap gap-2" id="category-filters">
+						<div class="flex flex-wrap gap-2 overflow-x-auto pb-2 no-scrollbar" id="category-filters">
 							{MENU_CATEGORIES.map(cat => (
 								<button 
 									data-category={cat.name}
-									class={`category-btn px-6 py-2 rounded-full text-sm font-bold transition-all border ${cat.name === 'Teas' ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
+									class={`category-btn whitespace-nowrap px-6 py-2 rounded-full text-sm font-bold transition-all border ${cat.name === 'Tea' ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
 								>
 									{cat.name}
 								</button>
@@ -125,9 +272,8 @@ const MENU_CATEGORIES = [
 							<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
 								<div class="flex justify-between items-start mb-2">
 									<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">{item.name}</h3>
-									<span class="text-amber-400 font-bold whitespace-nowrap ml-4">{item.price}</span>
+									<span class="text-amber-400 font-bold whitespace-nowrap ml-4">{'price' in item ? item.price : ''}</span>
 								</div>
-								<p class="text-[#d4c5ab] text-sm leading-relaxed">{item.description}</p>
 							</div>
 						))}
 					</div>
@@ -197,11 +343,17 @@ const MENU_CATEGORIES = [
 							<div class="flex gap-4">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 								<div>
-									<p class="font-bold text-lg">Barkat Market, Garden Town</p>
-									<p class="text-[#d4c5ab]">Lahore, Punjab, Pakistan</p>
+									<p class="font-bold text-lg">30 Civic Centre, Barkat Market</p>
+									<p class="text-[#d4c5ab]">New Garden Town, Lahore, Pakistan</p>
 								</div>
 							</div>
 							<div class="flex gap-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+								<div>
+									<p class="font-bold text-lg">Contact Us</p>
+									<p class="text-[#d4c5ab]">0314-9998804</p>
+								</div>
+							</div>
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 								<div>
 									<p class="font-bold text-lg">Open Daily</p>
@@ -212,10 +364,10 @@ const MENU_CATEGORIES = [
 								<a href="https://instagram.com/thequettatea20" target="_blank" rel="noopener noreferrer" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
 								</a>
-								<a href="https://wa.me/923000000000" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
+								<a href="https://wa.me/923149998804" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
 								</a>
-								<a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
+								<a href="https://www.google.com/maps/search/?api=1&query=30+Civic+Centre+Barkat+Market+New+Garden+Town+Lahore" target="_blank" rel="noopener noreferrer" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
 								</a>
 							</div>
@@ -229,7 +381,7 @@ const MENU_CATEGORIES = [
 						/>
 						<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
 							<a 
-								href="https://maps.google.com" 
+								href="https://www.google.com/maps/search/?api=1&query=30+Civic+Centre+Barkat+Market+New+Garden+Town+Lahore" 
 								target="_blank" 
 								rel="noopener noreferrer"
 								class="bg-[#131313] px-8 py-4 rounded-full border border-[#ffe2ab]/40 text-[#ffe2ab] font-bold hover:bg-[#ffe2ab] hover:text-[#402d00] transition-all shadow-2xl"
@@ -250,10 +402,10 @@ const MENU_CATEGORIES = [
 					<a href="#menu" class="hover:text-[#ffe2ab] transition-colors">Menu</a>
 					<a href="#experience" class="hover:text-[#ffe2ab] transition-colors">The Vibe</a>
 					<a href="#find-us" class="hover:text-[#ffe2ab] transition-colors">Find Us</a>
-					<a href="https://wa.me/923000000000" class="text-[#f59e0b] hover:text-[#ffe2ab] transition-colors">WhatsApp Takeaway</a>
+					<a href="https://wa.me/923149998804" class="text-[#f59e0b] hover:text-[#ffe2ab] transition-colors">WhatsApp Order</a>
 				</div>
 				<div class="text-xs text-[#d4c5ab]/60 text-center space-y-2">
-					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. Barkat Market.</p>
+					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. 30 Civic Centre, Barkat Market.</p>
 					<p>Dine-in & Takeaway Only. Open Late Night.</p>
 				</div>
 			</div>
@@ -261,7 +413,7 @@ const MENU_CATEGORIES = [
 
 		<!-- WhatsApp FAB -->
 		<a 
-			href="https://wa.me/923000000000" 
+			href="https://wa.me/923149998804" 
 			target="_blank" 
 			rel="noopener noreferrer"
 			class="fixed bottom-8 right-8 z-[60] group"
@@ -269,7 +421,7 @@ const MENU_CATEGORIES = [
 			<div class="bg-[#ffbf00] text-[#402d00] p-4 rounded-full shadow-2xl flex items-center gap-2 group-hover:pr-8 transition-all duration-300">
 				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fill-current"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
 				<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold whitespace-nowrap text-lg">
-					WhatsApp for Takeaway
+					WhatsApp Order
 				</span>
 			</div>
 		</a>
@@ -292,8 +444,16 @@ const MENU_CATEGORIES = [
 	// Mobile menu toggle
 	const menuToggle = document.getElementById('menu-toggle');
 	const mobileMenu = document.getElementById('mobile-menu');
+	const mobileLinks = document.querySelectorAll('.mobile-link');
+
 	menuToggle.addEventListener('click', () => {
 		mobileMenu.classList.toggle('hidden');
+	});
+
+	mobileLinks.forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu.classList.add('hidden');
+		});
 	});
 
 	// Menu filtering
@@ -315,15 +475,35 @@ const MENU_CATEGORIES = [
 			// Update menu items
 			const categoryData = MENU_CATEGORIES.find(cat => cat.name === category);
 			if (categoryData) {
-				menuGrid.innerHTML = categoryData.items.map(item => `
-					<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group opacity-0 translate-y-4 animate-fade-in-up">
-						<div class="flex justify-between items-start mb-2">
-							<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">${item.name}</h3>
-							<span class="text-amber-400 font-bold whitespace-nowrap ml-4">${item.price}</span>
+				menuGrid.innerHTML = categoryData.items.map(item => {
+					let priceHtml = `<span class="text-amber-400 font-bold whitespace-nowrap ml-4">${item.price || ''}</span>`;
+					
+					if (categoryData.type === 'pizza' && item.prices) {
+						priceHtml = `
+							<div class="flex gap-3 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
+								<div class="flex flex-col items-center"><span>S</span><span class="text-amber-400 text-sm">${item.prices.S}</span></div>
+								<div class="flex flex-col items-center"><span>M</span><span class="text-amber-400 text-sm">${item.prices.M}</span></div>
+								<div class="flex flex-col items-center"><span>L</span><span class="text-amber-400 text-sm">${item.prices.L}</span></div>
+							</div>
+						`;
+					} else if (categoryData.type === 'dual' && item.prices) {
+						priceHtml = `
+							<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
+								<div class="flex flex-col items-center"><span>Half</span><span class="text-amber-400 text-sm">${item.prices.Half}</span></div>
+								<div class="flex flex-col items-center"><span>Full</span><span class="text-amber-400 text-sm">${item.prices.Full}</span></div>
+							</div>
+						`;
+					}
+
+					return `
+						<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group opacity-0 translate-y-4 animate-fade-in-up">
+							<div class="flex justify-between items-start mb-2">
+								<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">${item.name}</h3>
+								${priceHtml}
+							</div>
 						</div>
-						<p class="text-[#d4c5ab] text-sm leading-relaxed">${item.description}</p>
-					</div>
-				`).join('');
+					`;
+				}).join('');
 			}
 		});
 	});
