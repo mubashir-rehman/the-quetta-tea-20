@@ -1,0 +1,205 @@
+---
+// src/components/GalleryCarousel.astro
+---
+
+<section class="py-24 bg-[#0a0a0a] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 mb-12">
+    <span class="text-blue-400 tracking-[0.3em] uppercase text-sm font-bold">Visual Journey</span>
+    <h2 class="text-5xl font-bold mt-2 text-white">The Gallery</h2>
+  </div>
+
+  <div class="swiper gallery-swiper pb-20">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-1.jpg" 
+            alt="Rooftop Seating" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">01</span>
+            <h3 class="text-2xl font-bold text-white">Rooftop Seating</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-2.jpg" 
+            alt="Fairy Lights Atmosphere" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">02</span>
+            <h3 class="text-2xl font-bold text-white">Fairy Lights</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-3.jpg" 
+            alt="Cozy Corner" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">03</span>
+            <h3 class="text-2xl font-bold text-white">Cozy Corner</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-4.jpg" 
+            alt="Hanging Decor" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">04</span>
+            <h3 class="text-2xl font-bold text-white">Hanging Decor</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-5.jpg" 
+            alt="Entertainment Area" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">05</span>
+            <h3 class="text-2xl font-bold text-white">Entertainment</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-6.jpg" 
+            alt="Night View" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">06</span>
+            <h3 class="text-2xl font-bold text-white">Night View</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7 -->
+      <div class="swiper-slide">
+        <div class="relative group overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(59,130,246,0.15)] border border-white/5 bg-white/5 animate-pulse gallery-image-container">
+          <img 
+            src="/media/gallery-7.jpg" 
+            alt="Rooftop TV" 
+            class="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-110 opacity-0"
+            referrerpolicy="no-referrer"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5')"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">07</span>
+            <h3 class="text-2xl font-bold text-white">Outdoor Cinema</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pagination -->
+    <div class="swiper-pagination !bottom-0"></div>
+  </div>
+</section>
+
+<style is:global>
+  .gallery-swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .gallery-swiper .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 400px;
+    filter: blur(2px) grayscale(0.5);
+    transition: all 0.5s ease;
+  }
+
+  .gallery-swiper .swiper-slide-active {
+    filter: blur(0) grayscale(0);
+    transform: scale(1.1);
+    z-index: 10;
+  }
+
+  .gallery-swiper .swiper-pagination-bullet {
+    background: rgba(59, 130, 246, 0.5);
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+  }
+
+  .gallery-swiper .swiper-pagination-bullet-active {
+    background: #60a5fa;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+    width: 30px;
+    border-radius: 6px;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-coverflow';
+  import 'swiper/css/pagination';
+
+  new Swiper('.gallery-swiper', {
+    modules: [EffectCoverflow, Pagination, Autoplay],
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>

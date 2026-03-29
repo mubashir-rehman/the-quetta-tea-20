@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { MENU_CATEGORIES } from '../data/menu';
+import GalleryCarousel from '../components/GalleryCarousel.astro';
 ---
 
 <Layout title="The Quetta Tea 20 (QT20) | Best Rooftop Tea in Barkat Market, Lahore" description="Chai, Music, and Rooftop Vibes. Experience the best Matka Chai and Parathas at The Quetta Tea 20 in Barkat Market, Lahore. Open late night.">
@@ -36,11 +37,12 @@ import { MENU_CATEGORIES } from '../data/menu';
 		<main>
 			<!-- Hero Section -->
 			<section class="relative h-screen flex items-center justify-center overflow-hidden">
-				<div class="absolute inset-0 z-0">
+				<div class="absolute inset-0 z-0 bg-[#0a0a0a] animate-pulse">
 					<img 
-						src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90" 
+						src="/media/gallery-2.jpg" 
 						alt="The Quetta Tea 20 Rooftop" 
-						class="w-full h-full object-cover"
+						class="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+						onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
 					/>
 					<div class="absolute inset-0 hero-gradient"></div>
 				</div>
@@ -64,6 +66,8 @@ import { MENU_CATEGORIES } from '../data/menu';
 					</div>
 				</div>
 			</section>
+
+			<GalleryCarousel />
 
 			<!-- Menu Section -->
 			<section id="menu" class="py-24 bg-[#131313] px-6">
@@ -90,7 +94,7 @@ import { MENU_CATEGORIES } from '../data/menu';
 							const categoryData = MENU_CATEGORIES[0];
 							let priceHtml = <span class="text-amber-400 font-bold whitespace-nowrap ml-4">{'price' in item ? item.price : ''}</span>;
 							
-							if (categoryData.type === 'pizza' && 'prices' in item && item.prices) {
+							if (categoryData.type === 'pizza' && 'prices' in item && item.prices && 'S' in item.prices) {
 								priceHtml = (
 									<div class="flex gap-3 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
 										<div class="flex flex-col items-center"><span>S</span><span class="text-amber-400 text-sm">{item.prices.S}</span></div>
@@ -98,7 +102,7 @@ import { MENU_CATEGORIES } from '../data/menu';
 										<div class="flex flex-col items-center"><span>L</span><span class="text-amber-400 text-sm">{item.prices.L}</span></div>
 									</div>
 								);
-							} else if (categoryData.type === 'dual' && 'prices' in item && item.prices) {
+							} else if (categoryData.type === 'dual' && 'prices' in item && item.prices && 'Half' in item.prices) {
 								priceHtml = (
 									<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
 										<div class="flex flex-col items-center"><span>Half</span><span class="text-amber-400 text-sm">{item.prices.Half}</span></div>
@@ -123,22 +127,24 @@ import { MENU_CATEGORIES } from '../data/menu';
 			<!-- Experience Section -->
 			<section id="experience" class="w-full bg-[#0e0e0e] overflow-hidden">
 				<div class="flex flex-col md:flex-row h-auto md:h-[80vh]">
-					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full">
+					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full bg-white/5 animate-pulse">
 						<img 
-							src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpEzRnwutv1qN8jjFz0G9cZmv_jn-AGgm3ROQO06xmoXX4VqZ-tue1bfwwir2wII5C2JizboEHboqxxfYQ4pgBEAQDAuQbAXD2u-VFybc61ee2mFJ_n7tkA4I44qhmKN1GTulot68HLNcocrAmvAa4RHRFkyerD-G0t2CYSU2LCY2QrvwggwlR_7rerHVSKhJPUYmpPybh3lVg1Vclr_9_mXlmWZ4Snk2EyXiGfu5axLvY73fOQW7H9_3HkVyDMOE58rgk3mXO8uU" 
+							src="/media/gallery-3.jpg" 
 							alt="Nostalgic Vibes" 
-							class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+							class="w-full h-full object-cover opacity-0 group-hover:opacity-80 transition-all duration-1000"
+							onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5'); this.classList.add('opacity-60')"
 						/>
 						<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-[#131313] to-transparent">
 							<h4 class="text-4xl font-bold mb-4">Legendary Melodies</h4>
 							<p class="text-[#d4c5ab] max-w-md">Immerse yourself in the soulful NFAK playlist that defines our nostalgic rooftop atmosphere.</p>
 						</div>
 					</div>
-					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full">
+					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full bg-white/5 animate-pulse">
 						<img 
-							src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Bou-79-XNVWqY4Rp_bJZ-cpyRPEKN8bxn5JIj9UD35mQvd-01OtboyntoNkLMoEKmwYrxBWn7Tl28ROUc-bFN74R1iURU5xsiAuTIU0m3FiREuQuyNCOabpw5-pqw674NAmOgC8-dOew_tuFfojYRtQDwNW7OR2G83nZadnwk2szt2x9cCyG0VSu6e7nPVMoOy3fOtPti41OhdIR5wRTh1UyYpyRjrt359z3v197bo4qEPDL-ypxKDx03Kj60cx9bCDdB62Gt6o" 
+							src="/media/gallery-1.jpg" 
 							alt="Rooftop Seating" 
-							class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+							class="w-full h-full object-cover opacity-0 group-hover:opacity-80 transition-all duration-1000"
+							onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5'); this.classList.add('opacity-60')"
 						/>
 						<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-[#131313] to-transparent">
 							<h4 class="text-4xl font-bold mb-4">Barkat Market Views</h4>
