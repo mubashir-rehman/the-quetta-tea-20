@@ -7,6 +7,10 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const SITE = Astro.site ?? new URL('https://the-quetta-tea-20.vercel.app');
+const canonical = new URL(Astro.url.pathname, SITE).href;
+const ogImage = new URL('/media/gallery-2.jpg', SITE).href;
 ---
 
 <!doctype html>
@@ -21,20 +25,23 @@ const { title, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="keywords" content="Best Rooftop Tea in Lahore, Barkat Market Late Night Food, Matka Chai Lahore, The Quetta Tea 20, QT20 Lahore" />
-		
+		<meta name="keywords" content="rooftop cafe Barkat Market, cafe in Garden Town Lahore, best chai in Lahore, karak chai, late night food Lahore, desi food Barkat Market, food deals Lahore, birthday venue Lahore, The Quetta Tea 20, QT20 Lahore" />
+		<link rel="canonical" href={canonical} />
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://thequettatea20.pk/" />
+		<meta property="og:site_name" content="The Quetta Tea 20" />
+		<meta property="og:locale" content="en_PK" />
+		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90" />
+		<meta property="og:image" content={ogImage} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90" />
+		<meta property="twitter:image" content={ogImage} />
 
 		<!-- Self-hosted fonts (declared in global.css). Preload the two used above
 		     the fold: Inter (body) and Noto Serif 900 (hero headline). -->
@@ -48,18 +55,25 @@ const { title, description } = Astro.props;
 				"@type": "FoodEstablishment",
 				"name": "The Quetta Tea 20",
 				"alternateName": "QT20",
-				"image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCtXlOFK_k1leHjrkx8WxoZi9LhnkXXt50xaPf2EGNy1m7ZQSW79Ydz0WpYuQbyUtGGGpiNh_rOSShzdqhfInaznPCg_q6eK92p-idmCKLRfTbBUPbU473_4TjPqjvdsBiOnpDjHkfewdJwVQUuJnPLrU22eEYRCdSLsYB0lfRfAJRM3w76g0t9RLbaO3TVQpG4d4nNPehqPoeWyZ8NJL00NpR4uW-BQVsQLlx0YhtYSE8dtDBoOLbMN3INdmqIYQWwouVQGPHTX90",
-				"@id": "https://thequettatea20.pk/",
-				"url": "https://thequettatea20.pk/",
+				"image": "https://the-quetta-tea-20.vercel.app/media/gallery-2.jpg",
+				"@id": "https://the-quetta-tea-20.vercel.app/",
+				"url": "https://the-quetta-tea-20.vercel.app/",
 				"telephone": "+923149998804",
+				"sameAs": [
+					"https://instagram.com/thequetta_tea20",
+					"https://www.foodpanda.pk/restaurant/wzu0/the-quetta-tea-20-wzu0"
+				],
 				"address": {
 					"@type": "PostalAddress",
 					"streetAddress": "30 Civic Centre, Barkat Market, New Garden Town",
 					"addressLocality": "Lahore",
 					"addressRegion": "Punjab",
-					"postalCode": "54000",
+					"postalCode": "54600",
 					"addressCountry": "PK"
 				},
+				"areaServed": ["Barkat Market", "Garden Town", "New Garden Town", "Lahore"],
+				"keywords": "rooftop cafe, chai, karak, parathas, burgers, pizza, desi food, late night food, Barkat Market, Garden Town, Lahore",
+				"acceptsReservations": true,
 				"geo": {
 					"@type": "GeoCoordinates",
 					"latitude": 31.5048,
@@ -75,6 +89,12 @@ const { title, description } = Astro.props;
 				},
 				"servesCuisine": ["Pakistani", "Chinese", "Continental", "Tea House"],
 				"priceRange": "Rs. 30 - Rs. 2050",
+				"hasMap": "https://maps.google.com/?cid=10502328263742130034",
+				"potentialAction": {
+					"@type": "OrderAction",
+					"target": "https://www.foodpanda.pk/restaurant/wzu0/the-quetta-tea-20-wzu0",
+					"deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"
+				},
 				"hasMenu": {
 					"@type": "Menu",
 					"hasMenuSection": [

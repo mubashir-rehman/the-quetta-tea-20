@@ -174,6 +174,26 @@ Replaced the one-category-at-a-time chip filter with a full, browsable menu
 - Section photos stay lazy-loaded, so perf holds. All item text is now in the
   initial HTML (better SEO than the hidden-behind-clicks version).
 
+## Round 4 (on-page SEO)
+
+Goal: stop chasing impossible head terms ("food", "restaurant") and win local +
+long-tail intent. Canonical domain confirmed = the-quetta-tea-20.vercel.app;
+GBP is claimed/verified.
+- Title/description rewritten for local intent (rooftop cafe / Barkat Market /
+  chai / late night / delivery / deals).
+- Added canonical, og:site_name/locale; fixed og:image + JSON-LD image to a
+  self-hosted photo (was a dead googleusercontent URL); all URLs now point to
+  the vercel domain (were mixed with thequettatea20.pk).
+- Enriched FoodEstablishment schema: sameAs (Instagram + Foodpanda), areaServed,
+  keywords, acceptsReservations, hasMap, OrderAction → Foodpanda. postalCode
+  54600.
+- New FAQ section (6 Q&As, native <details>) + FAQPage schema — targets
+  long-tail queries (location, hours, delivery, cuisine, rooftop, birthdays).
+- Keyword-rich intro paragraph under "Our Menu"; FAQ added to footer nav.
+- NOTE: biggest local lever is the Google Business Profile, not the site.
+  Site NAP now matches GBP exactly. Advised: photos, reviews, correct
+  categories, menu/products, and the website + Foodpanda links on the profile.
+
 ### PageSpeed after round 1 (mobile / desktop)
 Performance 96 / 100, Accessibility 72 / 81 (now improved), Best Practices
 100 / 100, SEO 100 / 100. LCP 2.3s mobile, CLS 0, TBT 0ms.

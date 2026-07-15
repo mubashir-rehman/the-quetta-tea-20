@@ -7,7 +7,7 @@ const slugify = (s) =>
 	s.toLowerCase().replace(/[()]/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 ---
 
-<Layout title="The Quetta Tea 20 (QT20) | Best Rooftop Tea in Barkat Market, Lahore" description="Chai, Music, and Rooftop Vibes. Experience the best Matka Chai and Parathas at The Quetta Tea 20 in Barkat Market, Lahore. Open late night.">
+<Layout title="The Quetta Tea 20 | Rooftop Cafe & Chai in Barkat Market, Lahore" description="Rooftop cafe in Barkat Market, Garden Town, Lahore. Quetta chai & karak, parathas, burgers, pizza, karahi & desi food. Open late (4:30 PM–3 AM), dine-in, Foodpanda delivery & Rs.999 deals.">
 	<div class="min-h-screen flex flex-col">
 		<!-- Navigation -->
 		<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
@@ -144,6 +144,7 @@ const slugify = (s) =>
 					<div class="mb-8">
 						<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">The Selection</span>
 						<h2 class="text-5xl font-bold mt-2">Our Menu</h2>
+						<p class="text-[#d4c5ab] mt-4 max-w-3xl">From authentic Quetta chai and karak to loaded parathas, burgers, pizza, Chinese, karahi and steaks — our full menu of desi food and refreshments at the best rooftop cafe in Barkat Market, Garden Town, Lahore.</p>
 					</div>
 
 					<!-- Sticky quick-jump bar (scroll-spy highlights the current section) -->
@@ -333,7 +334,76 @@ const slugify = (s) =>
 					</div>
 				</div>
 			</section>
+
+			<!-- FAQ Section (targets long-tail local queries + FAQ rich results) -->
+			<section id="faq" class="py-24 bg-[#131313] px-6">
+				<div class="max-w-4xl mx-auto">
+					<div class="mb-12 text-center">
+						<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">Good to Know</span>
+						<h2 class="text-5xl font-bold mt-2">Frequently Asked Questions</h2>
+					</div>
+					<div class="space-y-4">
+						<details class="group bg-[#1c1b1b] rounded-2xl border border-white/5 px-6 py-5">
+							<summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-[#ffe2ab] list-none">
+								Where is The Quetta Tea 20 located?
+								<span class="text-amber-400 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+							</summary>
+							<p class="text-[#d4c5ab] mt-4">The Quetta Tea 20 (QT20) is a rooftop cafe at 30 Civic Centre, Barkat Market, New Garden Town, Lahore — in the heart of Lahore's busiest food hub.</p>
+						</details>
+						<details class="group bg-[#1c1b1b] rounded-2xl border border-white/5 px-6 py-5">
+							<summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-[#ffe2ab] list-none">
+								What are your opening hours?
+								<span class="text-amber-400 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+							</summary>
+							<p class="text-[#d4c5ab] mt-4">We're open every day from 4:30 PM to 3:00 AM (next day) — ideal for dinner, chai and late-night food.</p>
+						</details>
+						<details class="group bg-[#1c1b1b] rounded-2xl border border-white/5 px-6 py-5">
+							<summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-[#ffe2ab] list-none">
+								Do you deliver, and how can I order?
+								<span class="text-amber-400 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+							</summary>
+							<p class="text-[#d4c5ab] mt-4">Yes — we deliver across Lahore on Foodpanda. You can also order dine-in or takeaway directly on WhatsApp at 0314-9998804.</p>
+						</details>
+						<details class="group bg-[#1c1b1b] rounded-2xl border border-white/5 px-6 py-5">
+							<summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-[#ffe2ab] list-none">
+								What kind of food do you serve?
+								<span class="text-amber-400 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+							</summary>
+							<p class="text-[#d4c5ab] mt-4">Authentic Quetta chai, karak and coffee, plus parathas, burgers, sandwiches, pizza, pasta, Chinese, karahi, handi and steaks — including Rs. 999 combo deals.</p>
+						</details>
+						<details class="group bg-[#1c1b1b] rounded-2xl border border-white/5 px-6 py-5">
+							<summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-[#ffe2ab] list-none">
+								Do you have a rooftop and space to hang out?
+								<span class="text-amber-400 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+							</summary>
+							<p class="text-[#d4c5ab] mt-4">Yes. We're an open-air rooftop cafe in Barkat Market with a nostalgic NFAK music vibe — a favourite hangout for friends, couples and families in Garden Town, Lahore.</p>
+						</details>
+						<details class="group bg-[#1c1b1b] rounded-2xl border border-white/5 px-6 py-5">
+							<summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-[#ffe2ab] list-none">
+								Can I book a birthday or event?
+								<span class="text-amber-400 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+							</summary>
+							<p class="text-[#d4c5ab] mt-4">Absolutely — we offer birthday decor and rooftop seating for up to 50 guests. Message us on WhatsApp to book your celebration.</p>
+						</details>
+					</div>
+				</div>
+			</section>
 		</main>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				"mainEntity": [
+					{ "@type": "Question", "name": "Where is The Quetta Tea 20 located?", "acceptedAnswer": { "@type": "Answer", "text": "The Quetta Tea 20 (QT20) is a rooftop cafe at 30 Civic Centre, Barkat Market, New Garden Town, Lahore." } },
+					{ "@type": "Question", "name": "What are your opening hours?", "acceptedAnswer": { "@type": "Answer", "text": "We are open every day from 4:30 PM to 3:00 AM (next day) — ideal for dinner, chai and late-night food." } },
+					{ "@type": "Question", "name": "Do you deliver, and how can I order?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — we deliver across Lahore on Foodpanda, and you can also order dine-in or takeaway on WhatsApp at 0314-9998804." } },
+					{ "@type": "Question", "name": "What kind of food do you serve?", "acceptedAnswer": { "@type": "Answer", "text": "Quetta chai, karak and coffee, plus parathas, burgers, sandwiches, pizza, pasta, Chinese, karahi, handi and steaks — including Rs. 999 combo deals." } },
+					{ "@type": "Question", "name": "Do you have a rooftop and space to hang out?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are an open-air rooftop cafe in Barkat Market with a nostalgic NFAK music vibe — a favourite hangout for friends, couples and families." } },
+					{ "@type": "Question", "name": "Can I book a birthday or event?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — we offer birthday decor and rooftop seating for up to 50 guests. Message us on WhatsApp to book." } }
+				]
+			}
+		</script>
 
 		<!-- Footer -->
 		<footer class="bg-[#131313] py-16 border-t border-white/5 px-6">
@@ -344,6 +414,7 @@ const slugify = (s) =>
 					<a href="#menu" class="hover:text-[#ffe2ab] transition-colors">Menu</a>
 					<a href="#experience" class="hover:text-[#ffe2ab] transition-colors">The Vibe</a>
 					<a href="#find-us" class="hover:text-[#ffe2ab] transition-colors">Find Us</a>
+					<a href="#faq" class="hover:text-[#ffe2ab] transition-colors">FAQ</a>
 					<a href="https://maps.google.com/?cid=10502328263742130034&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank" rel="noopener noreferrer" class="hover:text-[#ffe2ab] transition-colors">Get Directions</a>
 					<a href="https://wa.me/923149998804" class="text-[#f59e0b] hover:text-[#ffe2ab] transition-colors">WhatsApp Order</a>
 				</div>
