@@ -272,14 +272,38 @@ export const MENU_CATEGORIES: MenuCategory[] = [
   },
 ];
 
-// Attach a section-header image path to each category (printed-menu style: one
-// photo per section). Files live in /public/media/menu/<slug>.webp. Missing
-// files degrade gracefully (the <img> hides itself via onerror), so categories
-// without a photo simply show the title. Expected filenames, e.g.:
-//   starters.webp, tea.webp, quetta-coffee-house.webp, burger.webp, pizza.webp ...
+// Section-header image per category (printed-menu style: one photo per section).
+// These currently point at the restaurant's own Foodpanda dish photos (their
+// CDN). To self-host instead, drop /public/media/menu/<slug>.webp files in and
+// swap SECTION_IMAGE values to `/media/menu/<slug>.webp`. Missing/blocked images
+// degrade gracefully — the <img> hides itself via onerror.
 const slugify = (s: string): string =>
   s.toLowerCase().replace(/[()]/g, " ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
+const CDN = "https://images.deliveryhero.io/image/fd-pk/Products";
+const SECTION_IMAGE: Record<string, string> = {
+  "starters": `${CDN}/99457626.jpg?width=200&height=200`,
+  "tea": `${CDN}/99457652.jpg?width=200&height=200`,
+  "quetta-coffee-house": `${CDN}/99457707.jpg?width=200&height=200`,
+  "mocktail": `${CDN}/99457663.jpg?width=200&height=200`,
+  "paratha": `${CDN}/99457675.jpg?width=200&height=200`,
+  "paratha-roll": `${CDN}/99457705.jpg?width=200&height=200`,
+  "sandwich": `${CDN}/99457636.jpg?width=200&height=200`,
+  "burger": `${CDN}/99457631.jpg?width=200&height=200`,
+  "wraps": `${CDN}/99457681.jpg?width=200&height=200`,
+  "shawarma": `${CDN}/99457684.jpg?width=200&height=200`,
+  "steaks": `${CDN}/99457648.jpg?width=200&height=200`,
+  "pizza": `${CDN}/99457641.jpg?width=200&height=200`,
+  "pasta": `${CDN}/99457646.jpg?width=200&height=200`,
+  "chinese-rice": `${CDN}/99457694.jpg?width=200&height=200`,
+  "chinese-gravy": `${CDN}/99457690.jpg?width=200&height=200`,
+  "quetta-karahi-corner": `${CDN}/99457697.jpg?width=200&height=200`,
+  "chicken-handi": `${CDN}/99457701.jpg?width=200&height=200`,
+  "tandoori": `${CDN}/99457715.jpg?width=200&height=200`,
+  "salad": `${CDN}/99457713.jpg?width=200&height=200`,
+};
+
 for (const category of MENU_CATEGORIES) {
-  category.image = `/media/menu/${slugify(category.name)}.webp`;
+  const slug = slugify(category.name);
+  category.image = SECTION_IMAGE[slug] ?? `/media/menu/${slug}.webp`;
 }

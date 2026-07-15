@@ -141,13 +141,16 @@ to remove the render-blocking Google Fonts request. We copied its exact
   header image + title above the grid, updating on filter change. Wired via
   `category.image = /media/menu/<slug>.webp` in menu.ts, with an onerror
   fallback so missing files just hide the image (no broken icons).
-  **ACTION: drop 20 square (~400x400) WebP photos into `/public/media/menu/`.**
-  Filenames are listed in `/public/media/menu/_FILENAMES.txt`:
-  starters, tea, quetta-coffee-house, mocktail, paratha, paratha-roll, sandwich,
-  burger, wraps, shawarma, steaks, pizza, pasta, chinese-rice, chinese-gravy,
-  quetta-karahi-corner, chicken-handi, tandoori, beverages, salad.
-  (Decision: NOT per-item photos — would add ~90 images and hurt the 96/100
-  perf score; and Foodpanda CDN images shouldn't be hotlinked.)
+  **Now populated**: `SECTION_IMAGE` in menu.ts maps 19/20 categories to the
+  restaurant's own Foodpanda dish photos (images.deliveryhero.io), extracted
+  from the saved Foodpanda page. Verified they load when hotlinked. Beverages
+  has no Foodpanda photo → falls back to /media/menu/beverages.webp (hides if
+  absent).
+  CAVEAT: these load from Foodpanda's CDN, so a removed/changed photo could
+  break one. To self-host later, drop /public/media/menu/<slug>.webp files
+  (names in `_FILENAMES.txt`) and switch SECTION_IMAGE values to local paths.
+  (Decision: representative photo per SECTION, not per-item — ~19 images, keeps
+  the 96/100 perf; per-item would be ~90 requests.)
 - **Data fixes from the printed menu**: address → "30 Civic Centre, Barkat
   Market, New Garden Town, Lahore" (copy, footer, JSON-LD); Instagram handle →
   `thequetta_tea20` (underscore) — the old link had no underscore.
