@@ -160,6 +160,20 @@ to remove the render-blocking Google Fonts request. We copied its exact
   `apple-touch-icon.png` (180), `icon-512.png` (spare for PWA). Updated the head
   in Layout.astro (removed the dead `/favicon.svg` reference the site never had).
 
+## Round 3 (menu layout: stacked sections + scroll-spy)
+
+Replaced the one-category-at-a-time chip filter with a full, browsable menu
+(printed-menu / Foodpanda pattern):
+- All 20 categories render stacked, each with a compact header (section photo +
+  title) and its item grid — the whole menu is visible by scrolling, no clicks.
+- The old chips became a **sticky quick-jump bar** (anchor links) with
+  **scroll-spy** (IntersectionObserver) that highlights the section in view and
+  scrolls the active chip into view. Instant highlight on tap.
+- Removed the client-side `updateMenu` render + the `define:vars={{MENU_CATEGORIES}}`
+  payload (menu is now server-rendered), so no menu JSON ships to the client.
+- Section photos stay lazy-loaded, so perf holds. All item text is now in the
+  initial HTML (better SEO than the hidden-behind-clicks version).
+
 ### PageSpeed after round 1 (mobile / desktop)
 Performance 96 / 100, Accessibility 72 / 81 (now improved), Best Practices
 100 / 100, SEO 100 / 100. LCP 2.3s mobile, CLS 0, TBT 0ms.

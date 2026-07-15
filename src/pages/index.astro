@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { MENU_CATEGORIES, DEALS } from '../data/menu';
 import GalleryCarousel from '../components/GalleryCarousel.astro';
+
+const slugify = (s) =>
+	s.toLowerCase().replace(/[()]/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 ---
 
 <Layout title="The Quetta Tea 20 (QT20) | Best Rooftop Tea in Barkat Market, Lahore" description="Chai, Music, and Rooftop Vibes. Experience the best Matka Chai and Parathas at The Quetta Tea 20 in Barkat Market, Lahore. Open late night.">
@@ -138,53 +141,60 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 			<!-- Menu Section -->
 			<section id="menu" class="py-24 bg-[#131313] px-6">
 				<div class="max-w-7xl mx-auto">
-					<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-						<div>
-							<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">The Selection</span>
-							<h2 class="text-5xl font-bold mt-2">Our Menu</h2>
-						</div>
-						<div class="flex flex-wrap gap-2 overflow-x-auto pb-2 no-scrollbar" id="category-filters">
-							{MENU_CATEGORIES.map(cat => (
-								<button 
-									data-category={cat.name}
-									class={`category-btn whitespace-nowrap px-6 py-2 rounded-full text-sm font-bold transition-all border ${cat.name === MENU_CATEGORIES[0].name ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
+					<div class="mb-8">
+						<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">The Selection</span>
+						<h2 class="text-5xl font-bold mt-2">Our Menu</h2>
+					</div>
+
+					<!-- Sticky quick-jump bar (scroll-spy highlights the current section) -->
+					<div class="sticky top-16 z-30 -mx-6 mb-14 px-6 py-3 bg-[#131313]/90 backdrop-blur-md border-y border-white/5">
+						<div class="flex gap-2 overflow-x-auto no-scrollbar" id="category-filters">
+							{MENU_CATEGORIES.map((cat, i) => (
+								<a
+									href={`#cat-${slugify(cat.name)}`}
+									data-target={`cat-${slugify(cat.name)}`}
+									class={`category-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold transition-all border ${i === 0 ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
 								>
 									{cat.name}
-								</button>
+								</a>
 							))}
 						</div>
 					</div>
 
-					<!-- Active category header (printed-menu style: one image per section) -->
-					<div id="menu-cat-header" class="flex items-center gap-4 mb-8">
-						<img
-							id="menu-cat-img"
-							src={MENU_CATEGORIES[0].image}
-							alt={`${MENU_CATEGORIES[0].name} at The Quetta Tea 20`}
-							width="72" height="72"
-							loading="lazy" decoding="async" referrerpolicy="no-referrer"
-							class="w-16 h-16 rounded-2xl object-cover border border-white/10 shrink-0"
-							onerror="this.style.display='none'"
-						/>
-						<h3 id="menu-cat-name" class="text-2xl font-bold text-[#ffe2ab]">{MENU_CATEGORIES[0].name}</h3>
-					</div>
-
-					<div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{MENU_CATEGORIES[0].items.map((item) => (
-							<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
-								<div class="flex justify-between items-start gap-4 mb-2">
-									<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">{item.name}</h3>
-									{item.prices ? (
-										<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold shrink-0">
-											{Object.entries(item.prices).map(([size, amount]) => (
-												<div class="flex flex-col items-center"><span>{size}</span><span class="text-amber-400 text-sm">{amount}</span></div>
-											))}
-										</div>
-									) : (
-										<span class="text-amber-400 font-bold whitespace-nowrap shrink-0">Rs. {item.price}</span>
-									)}
+					<!-- All sections stacked (printed-menu / Foodpanda style) -->
+					<div class="space-y-16">
+						{MENU_CATEGORIES.map((cat) => (
+							<section id={`cat-${slugify(cat.name)}`} class="menu-section scroll-mt-36">
+								<div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
+									<img
+										src={cat.image}
+										alt={`${cat.name} at The Quetta Tea 20`}
+										width="64" height="64"
+										loading="lazy" decoding="async" referrerpolicy="no-referrer"
+										class="w-14 h-14 rounded-xl object-cover border border-white/10 shrink-0"
+										onerror="this.style.display='none'"
+									/>
+									<h3 class="text-2xl md:text-3xl font-bold text-[#ffe2ab]">{cat.name}</h3>
 								</div>
-							</div>
+								<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+									{cat.items.map((item) => (
+										<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
+											<div class="flex justify-between items-start gap-4 mb-2">
+												<h4 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">{item.name}</h4>
+												{item.prices ? (
+													<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold shrink-0">
+														{Object.entries(item.prices).map(([size, amount]) => (
+															<div class="flex flex-col items-center"><span>{size}</span><span class="text-amber-400 text-sm">{amount}</span></div>
+														))}
+													</div>
+												) : (
+													<span class="text-amber-400 font-bold whitespace-nowrap shrink-0">Rs. {item.price}</span>
+												)}
+											</div>
+										</div>
+									))}
+								</div>
+							</section>
 						))}
 					</div>
 				</div>
@@ -374,7 +384,7 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 	</div>
 </Layout>
 
-<script define:vars={{ MENU_CATEGORIES }}>
+<script>
 	// Navbar scroll effect
 	const navbar = document.getElementById('navbar');
 	window.addEventListener('scroll', () => {
@@ -406,63 +416,33 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 		});
 	});
 
-	// Menu filtering
-	const categoryBtns = document.querySelectorAll('.category-btn');
-	const menuGrid = document.getElementById('menu-grid');
+	// Menu scroll-spy: highlight the jump-bar chip for the section currently in view
+	const jumpLinks = Array.from(document.querySelectorAll('#category-filters .category-btn'));
+	const menuSections = Array.from(document.querySelectorAll('.menu-section'));
+	const linkByTarget = new Map(jumpLinks.map(a => [a.getAttribute('data-target'), a]));
 
-	const catImg = document.getElementById('menu-cat-img');
-	const catName = document.getElementById('menu-cat-name');
-
-	function updateMenu(category) {
-		const categoryData = MENU_CATEGORIES.find(cat => cat.name === category);
-		if (!categoryData || !menuGrid) return;
-
-		// Update the active category header (image + title)
-		if (catName) catName.textContent = categoryData.name;
-		if (catImg && categoryData.image) {
-			catImg.style.display = '';
-			catImg.src = categoryData.image;
-			catImg.alt = `${categoryData.name} at The Quetta Tea 20`;
-		}
-
-		menuGrid.innerHTML = categoryData.items.map(item => {
-			let priceHtml;
-
-			if (item.prices) {
-				const chips = Object.entries(item.prices).map(([size, amount]) => `
-					<div class="flex flex-col items-center"><span>${size}</span><span class="text-amber-400 text-sm">${amount}</span></div>
-				`).join('');
-				priceHtml = `<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold shrink-0">${chips}</div>`;
-			} else {
-				priceHtml = `<span class="text-amber-400 font-bold whitespace-nowrap shrink-0">Rs. ${item.price}</span>`;
-			}
-
-			return `
-				<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group translate-y-4 animate-fade-in-up">
-					<div class="flex justify-between items-start gap-4 mb-2">
-						<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">${item.name}</h3>
-						${priceHtml}
-					</div>
-				</div>
-			`;
-		}).join('');
+	function setActiveChip(link) {
+		jumpLinks.forEach(b => {
+			b.classList.remove('bg-[#ffe2ab]', 'text-[#402d00]', 'border-[#ffe2ab]');
+			b.classList.add('bg-[#1c1b1b]', 'text-[#d4c5ab]', 'border-white/5');
+		});
+		if (!link) return;
+		link.classList.add('bg-[#ffe2ab]', 'text-[#402d00]', 'border-[#ffe2ab]');
+		link.classList.remove('bg-[#1c1b1b]', 'text-[#d4c5ab]', 'border-white/5');
+		link.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
 	}
 
-	categoryBtns.forEach(btn => {
-		btn.addEventListener('click', () => {
-			const category = btn.getAttribute('data-category');
-			
-			// Update active button style
-			categoryBtns.forEach(b => {
-				b.classList.remove('bg-[#ffe2ab]', 'text-[#402d00]', 'border-[#ffe2ab]');
-				b.classList.add('bg-[#1c1b1b]', 'text-[#d4c5ab]', 'border-white/5');
-			});
-			btn.classList.add('bg-[#ffe2ab]', 'text-[#402d00]', 'border-[#ffe2ab]');
-			btn.classList.remove('bg-[#1c1b1b]', 'text-[#d4c5ab]', 'border-white/5');
+	// Instant feedback on tap; the anchor href handles the smooth scroll
+	jumpLinks.forEach(link => link.addEventListener('click', () => setActiveChip(link)));
 
-			updateMenu(category);
-		});
-	});
+	if (menuSections.length && 'IntersectionObserver' in window) {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) setActiveChip(linkByTarget.get(e.target.id));
+			});
+		}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+		menuSections.forEach(s => observer.observe(s));
+	}
 </script>
 
 <style>
