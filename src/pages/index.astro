@@ -15,10 +15,10 @@ const slugify = (s) =>
 				<div class="text-2xl font-black text-amber-400 tracking-tighter">THE QUETTA TEA 20</div>
 				
 					<div class="hidden md:flex items-center gap-10">
-						<a href="#deals" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Deals</a>
-						<a href="#menu" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Menu</a>
-						<a href="#experience" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">The Vibe</a>
-						<a href="#find-us" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Find Us</a>
+						<a href="#deals" data-nav="deals" class="nav-link text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium border-b-2 border-transparent pb-1">Deals</a>
+						<a href="#menu" data-nav="menu" class="nav-link text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium border-b-2 border-transparent pb-1">Menu</a>
+						<a href="#experience" data-nav="experience" class="nav-link text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium border-b-2 border-transparent pb-1">The Vibe</a>
+						<a href="#find-us" data-nav="find-us" class="nav-link text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium border-b-2 border-transparent pb-1">Find Us</a>
 						<a href="https://wa.me/923149998804" class="border border-amber-400 text-amber-400 px-6 py-2 rounded-full font-bold hover:bg-amber-400 hover:text-[#402d00] transition-all">
 							WhatsApp Order
 						</a>
@@ -282,7 +282,7 @@ const slugify = (s) =>
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 								<div>
 									<p class="font-bold text-lg">Open Daily</p>
-									<p class="text-[#d4c5ab]">12:00 PM — 2:00 AM (Next Day)</p>
+									<p class="text-[#d4c5ab]">4:30 PM — 3:00 AM (Next Day)</p>
 								</div>
 							</div>
 							<div class="flex gap-4">
@@ -415,6 +415,32 @@ const slugify = (s) =>
 			menuToggle.setAttribute('aria-label', 'Open navigation menu');
 		});
 	});
+
+	// Top-nav scroll-spy: highlight the nav link for the section currently in view
+	const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+	const navByTarget = new Map(navLinks.map(a => [a.getAttribute('data-nav'), a]));
+	const navSections = navLinks
+		.map(a => document.getElementById(a.getAttribute('data-nav')))
+		.filter(Boolean);
+
+	function setActiveNav(link) {
+		navLinks.forEach(a => {
+			a.classList.remove('text-amber-400', 'font-bold', 'border-amber-400');
+			a.classList.add('text-[#d4c5ab]', 'font-medium', 'border-transparent');
+		});
+		if (!link) return;
+		link.classList.add('text-amber-400', 'font-bold', 'border-amber-400');
+		link.classList.remove('text-[#d4c5ab]', 'font-medium', 'border-transparent');
+	}
+
+	if (navSections.length && 'IntersectionObserver' in window) {
+		const navObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) setActiveNav(navByTarget.get(e.target.id));
+			});
+		}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+		navSections.forEach(s => navObserver.observe(s));
+	}
 
 	// Menu scroll-spy: highlight the jump-bar chip for the section currently in view
 	const jumpLinks = Array.from(document.querySelectorAll('#category-filters .category-btn'));

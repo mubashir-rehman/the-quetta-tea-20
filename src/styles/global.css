@@ -100,3 +100,13 @@ h1, h2, h3, h4 {
 html {
   scroll-behavior: smooth;
 }
+
+/* Hide the horizontal scrollbar on the menu jump-bar / carousels while keeping
+   it scrollable (swipe / trackpad / drag still work). */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari, Opera */
+}
