@@ -128,6 +128,39 @@ to remove the render-blocking Google Fonts request. We copied its exact
    static image link), Instagram feed, per-item photos for hero menu items,
    an OG image hosted on our own domain (currently a googleusercontent URL).
 
+## Round 2 (Foodpanda, section images, a11y, data fixes)
+
+- **Foodpanda** (now the primary delivery channel): primary hero CTA (brand
+  pink #d70f64) + a "Delivery" line in Find Us. Link:
+  `https://www.foodpanda.pk/restaurant/wzu0/the-quetta-tea-20-wzu0`.
+- **Accessibility pass** (mobile a11y was 72): aria-labels on the hamburger and
+  all icon-only links (Instagram/WhatsApp/Maps + FAB), aria-expanded sync on the
+  menu toggle, raised low-contrast footer text (white/20, d4c5ab/60 → passing),
+  underlined the color-only inline links.
+- **Section images (printed-menu style)**: each menu category now shows one
+  header image + title above the grid, updating on filter change. Wired via
+  `category.image = /media/menu/<slug>.webp` in menu.ts, with an onerror
+  fallback so missing files just hide the image (no broken icons).
+  **ACTION: drop 20 square (~400x400) WebP photos into `/public/media/menu/`.**
+  Filenames are listed in `/public/media/menu/_FILENAMES.txt`:
+  starters, tea, quetta-coffee-house, mocktail, paratha, paratha-roll, sandwich,
+  burger, wraps, shawarma, steaks, pizza, pasta, chinese-rice, chinese-gravy,
+  quetta-karahi-corner, chicken-handi, tandoori, beverages, salad.
+  (Decision: NOT per-item photos — would add ~90 images and hurt the 96/100
+  perf score; and Foodpanda CDN images shouldn't be hotlinked.)
+- **Data fixes from the printed menu**: address → "30 Civic Centre, Barkat
+  Market, New Garden Town, Lahore" (copy, footer, JSON-LD); Instagram handle →
+  `thequetta_tea20` (underscore) — the old link had no underscore.
+
+- **Favicon**: generated a full icon set from `/public/media/logo.jpeg` —
+  `favicon.ico` (16/32/48), `favicon-16x16.png`, `favicon-32x32.png`,
+  `apple-touch-icon.png` (180), `icon-512.png` (spare for PWA). Updated the head
+  in Layout.astro (removed the dead `/favicon.svg` reference the site never had).
+
+### PageSpeed after round 1 (mobile / desktop)
+Performance 96 / 100, Accessibility 72 / 81 (now improved), Best Practices
+100 / 100, SEO 100 / 100. LCP 2.3s mobile, CLS 0, TBT 0ms.
+
 ## Files touched
 - `src/data/menu.ts` (rewritten)
 - `src/pages/index.astro` (deals section, generic prices, perf attrs, address, events line, webp)

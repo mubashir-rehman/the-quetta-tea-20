@@ -14,6 +14,7 @@ export interface MenuItem {
 export interface MenuCategory {
   name: string;
   items: MenuItem[];
+  image?: string;
 }
 
 export interface Deal {
@@ -270,3 +271,15 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     ],
   },
 ];
+
+// Attach a section-header image path to each category (printed-menu style: one
+// photo per section). Files live in /public/media/menu/<slug>.webp. Missing
+// files degrade gracefully (the <img> hides itself via onerror), so categories
+// without a photo simply show the title. Expected filenames, e.g.:
+//   starters.webp, tea.webp, quetta-coffee-house.webp, burger.webp, pizza.webp ...
+const slugify = (s: string): string =>
+  s.toLowerCase().replace(/[()]/g, " ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+for (const category of MENU_CATEGORIES) {
+  category.image = `/media/menu/${slugify(category.name)}.webp`;
+}

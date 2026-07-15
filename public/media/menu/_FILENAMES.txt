@@ -1,0 +1,21 @@
+# Drop one WebP per category here (square, ~400x400, name = slug):
+s.webptarters
+t.webpea
+q.webpuetta-coffee-house
+m.webpocktail
+p.webparatha
+p.webparatha-roll
+s.webpandwich
+b.webpurger
+w.webpraps
+s.webphawarma
+s.webpteaks
+p.webpizza
+p.webpasta
+c.webphinese-rice
+c.webphinese-gravy
+q.webpuetta-karahi-corner
+c.webphicken-handi
+t.webpandoori
+b.webpeverages
+s.webpalad

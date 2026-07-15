@@ -58,9 +58,13 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 						Experience the nostalgic atmosphere of Barkat Market's best open-air rooftop, featuring legendary NFAK melodies.
 					</p>
 					<div class="mt-12 flex flex-wrap justify-center gap-4 opacity-0 scale-95 animate-scale-in">
+						<a href="https://www.foodpanda.pk/restaurant/wzu0/the-quetta-tea-20-wzu0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#d70f64] text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-[#c30d59] hover:shadow-[#d70f64]/30 transition-all active:scale-95">
+							Order on Foodpanda
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+						</a>
 						<a href="#menu" class="inline-flex items-center gap-2 bg-gradient-to-br from-[#ffbf00] to-[#ffe2ab] text-[#402d00] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-[#ffbf00]/20 transition-all active:scale-95">
 							Explore the Menu
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
 						</a>
 						<a href="https://maps.google.com/?cid=10502328263742130034&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#2a2a2a] text-[#e5e2e1] px-10 py-4 rounded-full font-bold text-lg border border-white/10 hover:bg-[#353535] transition-all active:scale-95">
 							Get Directions
@@ -151,6 +155,20 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 						</div>
 					</div>
 
+					<!-- Active category header (printed-menu style: one image per section) -->
+					<div id="menu-cat-header" class="flex items-center gap-4 mb-8">
+						<img
+							id="menu-cat-img"
+							src={MENU_CATEGORIES[0].image}
+							alt={`${MENU_CATEGORIES[0].name} at The Quetta Tea 20`}
+							width="72" height="72"
+							loading="lazy" decoding="async"
+							class="w-16 h-16 rounded-2xl object-cover border border-white/10 shrink-0"
+							onerror="this.style.display='none'"
+						/>
+						<h3 id="menu-cat-name" class="text-2xl font-bold text-[#ffe2ab]">{MENU_CATEGORIES[0].name}</h3>
+					</div>
+
 					<div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 						{MENU_CATEGORIES[0].items.map((item) => (
 							<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
@@ -239,8 +257,8 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 							<div class="flex gap-4">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 								<div>
-									<p class="font-bold text-lg">30 Civic Center, Barkat Market</p>
-									<p class="text-[#d4c5ab]">Garden Town, Lahore, Pakistan</p>
+									<p class="font-bold text-lg">30 Civic Centre, Barkat Market</p>
+									<p class="text-[#d4c5ab]">New Garden Town, Lahore, Pakistan</p>
 								</div>
 							</div>
 							<div class="flex gap-4">
@@ -258,6 +276,13 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 								</div>
 							</div>
 							<div class="flex gap-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+								<div>
+									<p class="font-bold text-lg">Delivery</p>
+									<p class="text-[#d4c5ab]">Now delivering across Lahore — <a href="https://www.foodpanda.pk/restaurant/wzu0/the-quetta-tea-20-wzu0" target="_blank" rel="noopener noreferrer" class="text-[#d70f64] font-semibold underline underline-offset-2 hover:text-[#ffe2ab] transition-colors">order on Foodpanda</a>.</p>
+								</div>
+							</div>
+							<div class="flex gap-4">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 12v10H4V12"></path><path d="M2 7h20v5H2z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
 								<div>
 									<p class="font-bold text-lg">Birthdays & Events</p>
@@ -265,7 +290,7 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 								</div>
 							</div>
 							<div class="flex gap-6 pt-4">
-								<a href="https://instagram.com/thequettatea20" target="_blank" rel="noopener noreferrer" aria-label="The Quetta Tea 20 on Instagram" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
+								<a href="https://instagram.com/thequetta_tea20" target="_blank" rel="noopener noreferrer" aria-label="The Quetta Tea 20 on Instagram" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
 								</a>
 								<a href="https://wa.me/923149998804" aria-label="Order from The Quetta Tea 20 on WhatsApp" class="text-[#d4c5ab] hover:text-[#ffe2ab] transition-colors">
@@ -313,7 +338,7 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 					<a href="https://wa.me/923149998804" class="text-[#f59e0b] hover:text-[#ffe2ab] transition-colors">WhatsApp Order</a>
 				</div>
 				<div class="text-xs text-[#d4c5ab]/90 text-center space-y-2">
-					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. 30 Civic Center, Barkat Market, Garden Town, Lahore, Pakistan.</p>
+					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. 30 Civic Centre, Barkat Market, New Garden Town, Lahore, Pakistan.</p>
 					<p>Dine-in & Takeaway Only. Open Late Night.</p>
 				</div>
 
@@ -385,9 +410,20 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 	const categoryBtns = document.querySelectorAll('.category-btn');
 	const menuGrid = document.getElementById('menu-grid');
 
+	const catImg = document.getElementById('menu-cat-img');
+	const catName = document.getElementById('menu-cat-name');
+
 	function updateMenu(category) {
 		const categoryData = MENU_CATEGORIES.find(cat => cat.name === category);
 		if (!categoryData || !menuGrid) return;
+
+		// Update the active category header (image + title)
+		if (catName) catName.textContent = categoryData.name;
+		if (catImg && categoryData.image) {
+			catImg.style.display = '';
+			catImg.src = categoryData.image;
+			catImg.alt = `${categoryData.name} at The Quetta Tea 20`;
+		}
 
 		menuGrid.innerHTML = categoryData.items.map(item => {
 			let priceHtml;
