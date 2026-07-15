@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { MENU_CATEGORIES } from '../data/menu';
+import { MENU_CATEGORIES, DEALS } from '../data/menu';
 import GalleryCarousel from '../components/GalleryCarousel.astro';
 ---
 
@@ -12,7 +12,8 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 				<div class="text-2xl font-black text-amber-400 tracking-tighter">THE QUETTA TEA 20</div>
 				
 					<div class="hidden md:flex items-center gap-10">
-						<a href="#menu" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Menu</a>
+						<a href="#deals" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Deals</a>
+						<a href="#menu" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Menu</a>
 						<a href="#experience" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">The Vibe</a>
 						<a href="#find-us" class="text-[#d4c5ab] hover:text-[#e5e2e1] transition-colors font-medium">Find Us</a>
 						<a href="https://wa.me/923149998804" class="border border-amber-400 text-amber-400 px-6 py-2 rounded-full font-bold hover:bg-amber-400 hover:text-[#402d00] transition-all">
@@ -27,7 +28,8 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 
 			<!-- Mobile Menu -->
 			<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-[#131313]/95 backdrop-blur-2xl border-b border-white/5 py-10 px-8 space-y-8 shadow-2xl animate-fade-in">
-				<a href="#menu" class="mobile-link block text-2xl font-black text-amber-400 tracking-tighter">MENU</a>
+				<a href="#deals" class="mobile-link block text-2xl font-black text-amber-400 tracking-tighter">DEALS</a>
+				<a href="#menu" class="mobile-link block text-2xl font-black text-[#d4c5ab] tracking-tighter">MENU</a>
 				<a href="#experience" class="mobile-link block text-2xl font-black text-[#d4c5ab] tracking-tighter">THE VIBE</a>
 				<a href="#find-us" class="mobile-link block text-2xl font-black text-[#d4c5ab] tracking-tighter">FIND US</a>
 				<a href="https://wa.me/923149998804" class="mobile-link block text-2xl font-black text-amber-400 tracking-tighter border-t border-white/5 pt-8">WHATSAPP ORDER</a>
@@ -37,12 +39,13 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 		<main>
 			<!-- Hero Section -->
 			<section class="relative h-screen flex items-center justify-center overflow-hidden">
-				<div class="absolute inset-0 z-0 bg-[#0a0a0a] animate-pulse">
-					<img 
-						src="/media/gallery-2.jpg" 
-						alt="The Quetta Tea 20 Rooftop" 
-						class="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-						onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+				<div class="absolute inset-0 z-0 bg-[#0a0a0a]">
+					<img
+						src="/media/gallery-2.webp"
+						alt="The Quetta Tea 20 rooftop cafe at Barkat Market, Lahore"
+						width="1400" height="1750"
+						fetchpriority="high" decoding="async"
+						class="w-full h-full object-cover"
 					/>
 					<div class="absolute inset-0 hero-gradient"></div>
 				</div>
@@ -67,6 +70,65 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 				</div>
 			</section>
 
+			<!-- Deals Section -->
+			<section id="deals" class="py-24 bg-[#0e0e0e] px-6">
+				<div class="max-w-7xl mx-auto">
+					<div class="text-center mb-14">
+						<span class="text-[#bbcbb8] tracking-[0.3em] uppercase text-sm font-bold">Best Value</span>
+						<h2 class="text-5xl font-bold mt-2">Deals @ Rs. 999</h2>
+						<p class="text-[#d4c5ab] mt-4 max-w-xl mx-auto">Six loaded combos, one flat price. Pick your favourite and order in seconds on WhatsApp.</p>
+					</div>
+
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+						{DEALS.map((deal) => {
+							const orderText = encodeURIComponent(`Assalam-o-Alaikum! I'd like to order ${deal.name} (Rs. ${deal.price}).`);
+							const dealTitle = deal.name.split(':')[1]?.trim() ?? deal.name;
+							const dealTag = deal.name.split(':')[0]?.trim();
+							return (
+								<div class="group flex flex-col bg-[#1c1b1b] rounded-3xl overflow-hidden border border-white/5 hover:border-[#ffe2ab]/30 transition-all shadow-lg">
+									<div class="relative aspect-[4/3] bg-[#0a0a0a] overflow-hidden">
+										<img
+											src={deal.image}
+											alt={deal.name}
+											width="600" height="450"
+											loading="lazy" decoding="async"
+											class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+										/>
+										<div class="absolute top-4 right-4 bg-[#ffbf00] text-[#402d00] font-black text-lg px-4 py-2 rounded-full shadow-lg">
+											Rs. {deal.price}
+										</div>
+										{dealTag && (
+											<div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-[#ffe2ab] text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">
+												{dealTag}
+											</div>
+										)}
+									</div>
+									<div class="flex flex-col flex-1 p-6">
+										<h3 class="text-2xl text-[#ffe2ab] font-bold mb-4">{dealTitle}</h3>
+										<ul class="space-y-2 mb-6 flex-1">
+											{deal.items.map((item) => (
+												<li class="flex items-start gap-2 text-[#d4c5ab] text-sm">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffbf00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"></polyline></svg>
+													<span>{item}</span>
+												</li>
+											))}
+										</ul>
+										<a
+											href={`https://wa.me/923149998804?text=${orderText}`}
+											target="_blank" rel="noopener noreferrer"
+											class="mt-auto inline-flex items-center justify-center gap-2 bg-gradient-to-br from-[#ffbf00] to-[#ffe2ab] text-[#402d00] px-6 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-[#ffbf00]/20 transition-all active:scale-95"
+										>
+											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+											Order on WhatsApp
+										</a>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</section>
+
 			<GalleryCarousel />
 
 			<!-- Menu Section -->
@@ -81,7 +143,7 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 							{MENU_CATEGORIES.map(cat => (
 								<button 
 									data-category={cat.name}
-									class={`category-btn whitespace-nowrap px-6 py-2 rounded-full text-sm font-bold transition-all border ${cat.name === 'Tea' ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
+									class={`category-btn whitespace-nowrap px-6 py-2 rounded-full text-sm font-bold transition-all border ${cat.name === MENU_CATEGORIES[0].name ? 'bg-[#ffe2ab] text-[#402d00] border-[#ffe2ab]' : 'bg-[#1c1b1b] text-[#d4c5ab] border-white/5 hover:border-[#ffe2ab]/40'}`}
 								>
 									{cat.name}
 								</button>
@@ -90,36 +152,22 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 					</div>
 
 					<div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{MENU_CATEGORIES[0].items.map((item) => {
-							const categoryData = MENU_CATEGORIES[0];
-							let priceHtml = <span class="text-amber-400 font-bold whitespace-nowrap ml-4">{'price' in item ? item.price : ''}</span>;
-							
-							if (categoryData.type === 'pizza' && 'prices' in item && item.prices && 'S' in item.prices) {
-								priceHtml = (
-									<div class="flex gap-3 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
-										<div class="flex flex-col items-center"><span>S</span><span class="text-amber-400 text-sm">{item.prices.S}</span></div>
-										<div class="flex flex-col items-center"><span>M</span><span class="text-amber-400 text-sm">{item.prices.M}</span></div>
-										<div class="flex flex-col items-center"><span>L</span><span class="text-amber-400 text-sm">{item.prices.L}</span></div>
-									</div>
-								);
-							} else if (categoryData.type === 'dual' && 'prices' in item && item.prices && 'Half' in item.prices) {
-								priceHtml = (
-									<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
-										<div class="flex flex-col items-center"><span>Half</span><span class="text-amber-400 text-sm">{item.prices.Half}</span></div>
-										<div class="flex flex-col items-center"><span>Full</span><span class="text-amber-400 text-sm">{item.prices.Full}</span></div>
-									</div>
-								);
-							}
-
-							return (
-								<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
-									<div class="flex justify-between items-start mb-2">
-										<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">{item.name}</h3>
-										{priceHtml}
-									</div>
+						{MENU_CATEGORIES[0].items.map((item) => (
+							<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group">
+								<div class="flex justify-between items-start gap-4 mb-2">
+									<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">{item.name}</h3>
+									{item.prices ? (
+										<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold shrink-0">
+											{Object.entries(item.prices).map(([size, amount]) => (
+												<div class="flex flex-col items-center"><span>{size}</span><span class="text-amber-400 text-sm">{amount}</span></div>
+											))}
+										</div>
+									) : (
+										<span class="text-amber-400 font-bold whitespace-nowrap shrink-0">Rs. {item.price}</span>
+									)}
 								</div>
-							);
-						})}
+							</div>
+						))}
 					</div>
 				</div>
 			</section>
@@ -127,24 +175,26 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 			<!-- Experience Section -->
 			<section id="experience" class="w-full bg-[#0e0e0e] overflow-hidden">
 				<div class="flex flex-col md:flex-row h-auto md:h-[80vh]">
-					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full bg-white/5 animate-pulse">
-						<img 
-							src="/media/gallery-3.jpg" 
-							alt="Nostalgic Vibes" 
-							class="w-full h-full object-cover opacity-0 group-hover:opacity-80 transition-all duration-1000"
-							onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5'); this.classList.add('opacity-60')"
+					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full">
+						<img
+							src="/media/gallery-3.webp"
+							alt="Nostalgic Vibes"
+							width="1400" height="1050"
+							loading="lazy" decoding="async"
+							class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-1000"
 						/>
 						<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-[#131313] to-transparent">
 							<h4 class="text-4xl font-bold mb-4">Legendary Melodies</h4>
 							<p class="text-[#d4c5ab] max-w-md">Immerse yourself in the soulful NFAK playlist that defines our nostalgic rooftop atmosphere.</p>
 						</div>
 					</div>
-					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full bg-white/5 animate-pulse">
-						<img 
-							src="/media/gallery-1.jpg" 
-							alt="Rooftop Seating" 
-							class="w-full h-full object-cover opacity-0 group-hover:opacity-80 transition-all duration-1000"
-							onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse', 'bg-white/5'); this.classList.add('opacity-60')"
+					<div class="w-full md:w-1/2 relative group h-[500px] md:h-full">
+						<img
+							src="/media/gallery-1.webp"
+							alt="Rooftop Seating"
+							width="1400" height="1050"
+							loading="lazy" decoding="async"
+							class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-1000"
 						/>
 						<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-[#131313] to-transparent">
 							<h4 class="text-4xl font-bold mb-4">Barkat Market Views</h4>
@@ -189,8 +239,8 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 							<div class="flex gap-4">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 								<div>
-									<p class="font-bold text-lg">Commercial Area Garden Town</p>
-									<p class="text-[#d4c5ab]">Lahore, 54000, Pakistan</p>
+									<p class="font-bold text-lg">30 Civic Center, Barkat Market</p>
+									<p class="text-[#d4c5ab]">Garden Town, Lahore, Pakistan</p>
 								</div>
 							</div>
 							<div class="flex gap-4">
@@ -205,6 +255,13 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 								<div>
 									<p class="font-bold text-lg">Open Daily</p>
 									<p class="text-[#d4c5ab]">12:00 PM — 2:00 AM (Next Day)</p>
+								</div>
+							</div>
+							<div class="flex gap-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe2ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 12v10H4V12"></path><path d="M2 7h20v5H2z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+								<div>
+									<p class="font-bold text-lg">Birthdays & Events</p>
+									<p class="text-[#d4c5ab]">Decor + rooftop seating for up to 50 guests. Message us on WhatsApp to book.</p>
 								</div>
 							</div>
 							<div class="flex gap-6 pt-4">
@@ -223,7 +280,9 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 					<div class="rounded-3xl overflow-hidden h-[450px] shadow-2xl grayscale contrast-125 border border-white/5 relative group">
 						<img 
 							src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxfsV5wWx2idmIjCYev0KOGs1x1nYJVop_VmsKdVSEnuJeJ5Pvhk9vzuxn6YeeiKfxDUSjXGQ5jDN1aQgSr2gerdbYG-ZGF4tgOLYsENutmCXfSMxBF3iYc_pt6IB8HbNvC7dAwdzAaPIq1af0CK92gEB4m9I2ZvBfec7A6y1O3NGSNLOfq_n1cyBsDdUECA_dXWEEyRC8J9OioE9OrUohfpd6qRVw907cK3GChxDTm0PS5g2_eSBEXeK2PDfzi9btp10MxprQoQQ" 
-							alt="Map Location" 
+							alt="The Quetta Tea 20 location on the map"
+							width="700" height="450"
+							loading="lazy" decoding="async"
 							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
 						/>
 						<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -246,6 +305,7 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 			<div class="max-w-7xl mx-auto flex flex-col items-center gap-8">
 				<div class="text-2xl font-black text-[#e5e2e1] tracking-tighter">THE QUETTA TEA 20</div>
 				<div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-[#d4c5ab]">
+					<a href="#deals" class="hover:text-[#ffe2ab] transition-colors">Deals</a>
 					<a href="#menu" class="hover:text-[#ffe2ab] transition-colors">Menu</a>
 					<a href="#experience" class="hover:text-[#ffe2ab] transition-colors">The Vibe</a>
 					<a href="#find-us" class="hover:text-[#ffe2ab] transition-colors">Find Us</a>
@@ -253,7 +313,7 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 					<a href="https://wa.me/923149998804" class="text-[#f59e0b] hover:text-[#ffe2ab] transition-colors">WhatsApp Order</a>
 				</div>
 				<div class="text-xs text-[#d4c5ab]/60 text-center space-y-2">
-					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. Commercial Area Garden Town, Lahore, 54000, Pakistan.</p>
+					<p>© 2026 The Quetta Tea 20 (QT20) Lahore. 30 Civic Center, Barkat Market, Garden Town, Lahore, Pakistan.</p>
 					<p>Dine-in & Takeaway Only. Open Late Night.</p>
 				</div>
 
@@ -325,28 +385,20 @@ import GalleryCarousel from '../components/GalleryCarousel.astro';
 		if (!categoryData || !menuGrid) return;
 
 		menuGrid.innerHTML = categoryData.items.map(item => {
-			let priceHtml = `<span class="text-amber-400 font-bold whitespace-nowrap ml-4">${item.price || ''}</span>`;
-			
-			if (categoryData.type === 'pizza' && item.prices) {
-				priceHtml = `
-					<div class="flex gap-3 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
-						<div class="flex flex-col items-center"><span>S</span><span class="text-amber-400 text-sm">${item.prices.S}</span></div>
-						<div class="flex flex-col items-center"><span>M</span><span class="text-amber-400 text-sm">${item.prices.M}</span></div>
-						<div class="flex flex-col items-center"><span>L</span><span class="text-amber-400 text-sm">${item.prices.L}</span></div>
-					</div>
-				`;
-			} else if (categoryData.type === 'dual' && item.prices) {
-				priceHtml = `
-					<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold ml-4">
-						<div class="flex flex-col items-center"><span>Half</span><span class="text-amber-400 text-sm">${item.prices.Half}</span></div>
-						<div class="flex flex-col items-center"><span>Full</span><span class="text-amber-400 text-sm">${item.prices.Full}</span></div>
-					</div>
-				`;
+			let priceHtml;
+
+			if (item.prices) {
+				const chips = Object.entries(item.prices).map(([size, amount]) => `
+					<div class="flex flex-col items-center"><span>${size}</span><span class="text-amber-400 text-sm">${amount}</span></div>
+				`).join('');
+				priceHtml = `<div class="flex gap-4 text-[10px] uppercase tracking-tighter text-amber-400/80 font-bold shrink-0">${chips}</div>`;
+			} else {
+				priceHtml = `<span class="text-amber-400 font-bold whitespace-nowrap shrink-0">Rs. ${item.price}</span>`;
 			}
 
 			return `
 				<div class="menu-item glass-card p-6 rounded-2xl border border-white/5 hover:border-[#ffe2ab]/20 transition-all group translate-y-4 animate-fade-in-up">
-					<div class="flex justify-between items-start mb-2">
+					<div class="flex justify-between items-start gap-4 mb-2">
 						<h3 class="text-xl text-[#ffe2ab] font-bold group-hover:text-amber-400 transition-colors">${item.name}</h3>
 						${priceHtml}
 					</div>
