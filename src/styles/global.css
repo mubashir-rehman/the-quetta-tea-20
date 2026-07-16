@@ -125,3 +125,19 @@ html {
 .no-scrollbar::-webkit-scrollbar {
   display: none;            /* Chrome, Safari, Opera */
 }
+
+/* Reviews carousel (Swiper) */
+.reviews-swiper {
+  padding-bottom: 2.75rem;
+}
+.reviews-pagination .swiper-pagination-bullet {
+  background: #6b6b6b;
+  opacity: 1;
+  width: 9px;
+  height: 9px;
+}
+.reviews-pagination .swiper-pagination-bullet-active {
+  background: #ffe2ab;
+  width: 22px;
+  border-radius: 5px;
+}
