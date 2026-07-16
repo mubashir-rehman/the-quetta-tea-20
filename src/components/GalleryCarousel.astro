@@ -186,27 +186,32 @@
   import 'swiper/css/effect-coverflow';
   import 'swiper/css/pagination';
 
-  new Swiper('.gallery-swiper', {
-    modules: [EffectCoverflow, Pagination, Autoplay],
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    coverflowEffect: {
-      rotate: 30,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
+  // Lazy-init: the gallery is below the fold, so defer Swiper until it's near
+  // the viewport. Keeps the heavy init off the main thread during first paint
+  // (improves LCP render delay / avoids a long task at load).
+  const el = document.querySelector('.gallery-swiper');
+  let started = false;
+  const start = () => {
+    if (started || !el) return;
+    started = true;
+    new Swiper('.gallery-swiper', {
+      modules: [EffectCoverflow, Pagination, Autoplay],
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      coverflowEffect: { rotate: 30, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+      pagination: { el: '.swiper-pagination', clickable: true },
+    });
+  };
+  if (el && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); start(); }
+    }, { rootMargin: '300px 0px' });
+    io.observe(el);
+  } else {
+    start();
+  }
 </script>
