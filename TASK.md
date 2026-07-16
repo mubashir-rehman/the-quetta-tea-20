@@ -194,6 +194,23 @@ GBP is claimed/verified.
   Site NAP now matches GBP exactly. Advised: photos, reviews, correct
   categories, menu/products, and the website + Foodpanda links on the profile.
 
+## Round 5 (editorial redesign — ui-ux-pro-max skill)
+
+Direction chosen: **refined dark editorial**, full restyle. Used the
+ui-ux-pro-max design-intelligence skill (rejected its Liquid Glass pick for perf
+/ contrast reasons; adopted its editorial + typography guidance).
+- **Typography:** self-hosted **Playfair Display** (600/700/800/900 + 500 italic)
+  as the display serif for h1/h2/h3; Inter stays for body/UI. Replaced Noto Serif
+  (now unused). Preload Playfair 900 for the hero. This is the dominant visual
+  upgrade — every major heading now reads as an elegant restaurant.
+- **Testimonials/social proof (new #reviews section):** three real Google
+  reviews (Zayn, Mahnoor Asim, Aftab Ahmad) + 4.0★ rating with a link to the
+  Google listing. Pulled live from the Maps listing. Added Reviews to nav +
+  footer (scroll-spy picks it up automatically).
+- Promoted the two Experience feature titles h4→h3 so they take the display serif.
+- Kept the amber/gold brand accent and the dark palette for brand continuity;
+  kept perf wins (self-hosted fonts, lazy images, no hero entrance animation).
+
 ### PageSpeed after round 1 (mobile / desktop)
 Performance 96 / 100, Accessibility 72 / 81 (now improved), Best Practices
 100 / 100, SEO 100 / 100. LCP 2.3s mobile, CLS 0, TBT 0ms.

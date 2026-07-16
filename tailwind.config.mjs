@@ -17,7 +17,8 @@ export default {
         'on-surface-variant': '#d4c5ab',
       },
       fontFamily: {
-        headline: ['"Noto Serif"', 'serif'],
+        headline: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         body: ['Inter', 'sans-serif'],
       },
     },
