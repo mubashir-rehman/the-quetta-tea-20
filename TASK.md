@@ -211,6 +211,21 @@ ui-ux-pro-max design-intelligence skill (rejected its Liquid Glass pick for perf
 - Kept the amber/gold brand accent and the dark palette for brand continuity;
   kept perf wins (self-hosted fonts, lazy images, no hero entrance animation).
 
+## Round 6 (mobile bottom nav)
+
+- New `src/components/BottomNav.astro` (md:hidden), adapted from the portfolio's
+  BottomNav (safe-area inset + visualViewport pinning for Android URL bar).
+- Items: Deals · Menu · [Order] · Find Us · Reviews, with an **elevated centre
+  Order FAB** (amber) that opens a small sheet → Foodpanda (pink) + WhatsApp
+  (green). Dismiss on backdrop/Escape/selection. aria-expanded synced.
+- Scroll-spy highlights the section in view (own IntersectionObserver).
+- WhatsApp FAB is now **desktop-only** (`hidden md:block`); mobile uses the
+  Order button. Added a mobile spacer so content clears the bar.
+- **AI chatbot was considered and dropped** (user's call) — public API key
+  exposure + weight; FAQ + WhatsApp already cover Q&A.
+- Decision: no separate mobile codebase — the single page already reflows; this
+  is bottom nav + thumb spacing, not a parallel mobile theme.
+
 ### PageSpeed after round 1 (mobile / desktop)
 Performance 96 / 100, Accessibility 72 / 81 (now improved), Best Practices
 100 / 100, SEO 100 / 100. LCP 2.3s mobile, CLS 0, TBT 0ms.

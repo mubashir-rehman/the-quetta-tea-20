@@ -1,0 +1,138 @@
+---
+// BottomNav.astro — mobile bottom navigation (md:hidden).
+// Deals · Menu · [Order FAB] · Find Us · Reviews. The elevated centre Order
+// button opens a small sheet with Foodpanda + WhatsApp. Adapted from the
+// portfolio BottomNav (safe-area + visualViewport pinning for Android URL bar).
+const WA = "https://wa.me/923149998804";
+const FP = "https://www.foodpanda.pk/restaurant/wzu0/the-quetta-tea-20-wzu0";
+---
+
+<!-- Dismiss backdrop for the order sheet -->
+<div id="order-backdrop" class="fixed inset-0 z-[99] bg-black/50 opacity-0 pointer-events-none transition-opacity duration-200 md:hidden"></div>
+
+<nav
+  id="bottom-nav"
+  class="fixed inset-x-0 bottom-0 z-[100] border-t border-white/10 bg-[#131313] md:hidden"
+  aria-label="Mobile navigation"
+  style="padding-bottom: env(safe-area-inset-bottom); transform: translateZ(0); will-change: transform;"
+>
+  <!-- Order sheet (opens above the FAB) -->
+  <div
+    id="order-popup"
+    role="menu"
+    aria-label="Order options"
+    class="absolute bottom-[74px] left-1/2 -translate-x-1/2 w-[82vw] max-w-xs origin-bottom scale-95 opacity-0 pointer-events-none transition-all duration-200"
+  >
+    <div class="bg-[#1c1b1b] border border-white/10 rounded-2xl shadow-2xl p-3 space-y-2">
+      <a href={FP} target="_blank" rel="noopener noreferrer" role="menuitem" class="order-opt flex items-center gap-3 bg-[#d70f64] text-white font-bold px-4 py-3 rounded-xl active:scale-95 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+        Order on Foodpanda
+      </a>
+      <a href={WA} target="_blank" rel="noopener noreferrer" role="menuitem" class="order-opt flex items-center gap-3 bg-[#25D366] text-[#0a2e17] font-bold px-4 py-3 rounded-xl active:scale-95 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        Order on WhatsApp
+      </a>
+    </div>
+    <div class="w-3 h-3 bg-[#1c1b1b] border-r border-b border-white/10 rotate-45 mx-auto -mt-1.5"></div>
+  </div>
+
+  <div class="relative flex h-16 items-stretch">
+    <a href="#deals" data-bnav="deals" aria-label="Deals" class="bnav-link flex flex-1 flex-col items-center justify-center gap-1 text-[#d4c5ab] transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M13 5v2"></path><path d="M13 17v2"></path><path d="M13 11v2"></path></svg>
+      <span class="text-[10px] font-medium leading-none">Deals</span>
+    </a>
+    <a href="#menu" data-bnav="menu" aria-label="Menu" class="bnav-link flex flex-1 flex-col items-center justify-center gap-1 text-[#d4c5ab] transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"></path><path d="M12 11v9"></path><path d="M7 20h10"></path><path d="M4 4h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"></path></svg>
+      <span class="text-[10px] font-medium leading-none">Menu</span>
+    </a>
+
+    <!-- Centre: elevated Order button -->
+    <div class="relative flex flex-1 flex-col items-center justify-end">
+      <button
+        id="order-fab"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="order-popup"
+        aria-label="Order now"
+        class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-[#ffbf00] to-[#ffe2ab] text-[#402d00] shadow-lg shadow-[#ffbf00]/30 flex items-center justify-center border-4 border-[#131313] active:scale-95 transition-transform"
+      >
+        <svg id="order-fab-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      </button>
+      <span class="text-[10px] font-medium leading-none text-[#ffe2ab] mb-2.5">Order</span>
+    </div>
+
+    <a href="#find-us" data-bnav="find-us" aria-label="Find Us" class="bnav-link flex flex-1 flex-col items-center justify-center gap-1 text-[#d4c5ab] transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      <span class="text-[10px] font-medium leading-none">Find Us</span>
+    </a>
+    <a href="#reviews" data-bnav="reviews" aria-label="Reviews" class="bnav-link flex flex-1 flex-col items-center justify-center gap-1 text-[#d4c5ab] transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 3.3a.6.6 0 0 1 1 0l2.3 4.7 5.2.7a.6.6 0 0 1 .3 1L16.8 13l.9 5.2a.6.6 0 0 1-.9.6L12 16.4l-4.8 2.5a.6.6 0 0 1-.9-.6l.9-5.2-3.8-3.6a.6.6 0 0 1 .3-1l5.2-.7Z"></path></svg>
+      <span class="text-[10px] font-medium leading-none">Reviews</span>
+    </a>
+  </div>
+</nav>
+
+<script is:inline>
+  (function () {
+    function init() {
+      var nav = document.getElementById("bottom-nav");
+      if (!nav || nav.dataset.init) return;
+      nav.dataset.init = "1";
+
+      // --- Pin to visual viewport (Android URL-bar show/hide) ---
+      var vv = window.visualViewport;
+      if (vv) {
+        var raf = 0;
+        var place = function () {
+          raf = 0;
+          var offset = window.innerHeight - (vv.height + vv.offsetTop);
+          if (offset > 150) { nav.style.transform = "translateY(100%)"; }
+          else { nav.style.transform = "translateY(" + -Math.max(0, offset) + "px) translateZ(0)"; }
+        };
+        var schedule = function () { if (!raf) raf = requestAnimationFrame(place); };
+        vv.addEventListener("resize", schedule);
+        vv.addEventListener("scroll", schedule);
+        place();
+      }
+
+      // --- Order sheet toggle ---
+      var fab = document.getElementById("order-fab");
+      var popup = document.getElementById("order-popup");
+      var backdrop = document.getElementById("order-backdrop");
+      var open = false;
+      var openCls = ["opacity-100", "scale-100", "pointer-events-auto"];
+      var closedCls = ["opacity-0", "scale-95", "pointer-events-none"];
+      function setOpen(v) {
+        open = v;
+        fab.setAttribute("aria-expanded", String(v));
+        if (v) { popup.classList.add.apply(popup.classList, openCls); popup.classList.remove.apply(popup.classList, closedCls); backdrop.classList.add("opacity-100", "pointer-events-auto"); backdrop.classList.remove("opacity-0", "pointer-events-none"); }
+        else { popup.classList.add.apply(popup.classList, closedCls); popup.classList.remove.apply(popup.classList, openCls); backdrop.classList.remove("opacity-100", "pointer-events-auto"); backdrop.classList.add("opacity-0", "pointer-events-none"); }
+      }
+      fab.addEventListener("click", function (e) { e.stopPropagation(); setOpen(!open); });
+      backdrop.addEventListener("click", function () { setOpen(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && open) setOpen(false); });
+      Array.prototype.forEach.call(document.querySelectorAll(".order-opt"), function (a) {
+        a.addEventListener("click", function () { setOpen(false); });
+      });
+
+      // --- Scroll-spy: highlight the section in view ---
+      var links = Array.prototype.slice.call(document.querySelectorAll(".bnav-link"));
+      var byId = {};
+      links.forEach(function (l) { byId[l.getAttribute("data-bnav")] = l; });
+      var sections = links.map(function (l) { return document.getElementById(l.getAttribute("data-bnav")); }).filter(Boolean);
+      function activate(link) {
+        links.forEach(function (l) { l.classList.remove("text-[#ffe2ab]"); l.classList.add("text-[#d4c5ab]"); });
+        if (link) { link.classList.add("text-[#ffe2ab]"); link.classList.remove("text-[#d4c5ab]"); }
+      }
+      if (sections.length && "IntersectionObserver" in window) {
+        var ob = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) activate(byId[e.target.id]); });
+        }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+        sections.forEach(function (s) { ob.observe(s); });
+      }
+    }
+    init();
+    document.addEventListener("astro:page-load", init);
+  })();
+</script>
